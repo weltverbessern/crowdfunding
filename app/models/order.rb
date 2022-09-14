@@ -2,45 +2,17 @@ class Order < ActiveRecord::Base
   before_validation :generate_uuid!, :on => :create
   belongs_to :user
   belongs_to :payment_option
-  scope :completed, -> { where("token != ? OR token != ?", "", nil) }
   self.primary_key = 'uuid'
 
-  # This is where we create our Caller Reference for Amazon Payments, and prefill some other information.
-  def self.prefill!(options = {})
-    @order                = Order.new
-    @order.name           = options[:name]
-    @order.user_id        = options[:user_id]
-    @order.price          = options[:price]
-    @order.number         = Order.next_order_number
-    @order.payment_option = options[:payment_option] if !options[:payment_option].nil?
-    @order.save!
-
-    @order
-  end
-
-  # After authenticating with Amazon, we get the rest of the details
-  def self.postfill!(options = {})
-    @order = Order.find_by!(:uuid => options[:callerReference])
-    @order.token             = options[:tokenID]
-    if @order.token.present?
-      @order.address_one     = options[:addressLine1]
-      @order.address_two     = options[:addressLine2]
-      @order.city            = options[:city]
-      @order.state           = options[:state]
-      @order.status          = options[:status]
-      @order.zip             = options[:zip]
-      @order.phone           = options[:phoneNumber]
-      @order.country         = options[:country]
-      @order.expiration      = Date.parse(options[:expiry])
-      @order.save!
-
-      @order
-    end
+  def self.generate
+    o = self.new
+    o.order_number = Order.next_order_number || 1
+    o
   end
 
   def self.next_order_number
     if Order.count > 0
-      Order.order("number DESC").limit(1).first.number.to_i + 1
+      Order.order("order_number DESC").limit(1).first.order_number.to_i + 1
     else
       1
     end
@@ -64,14 +36,14 @@ class Order < ActiveRecord::Base
 
   # See what it looks like when you have some backers! Drop in a number instead of Order.count
   def self.backers
-    Order.completed.count
+    Order.count
   end
 
   def self.revenue
     if Settings.use_payment_options
       PaymentOption.joins(:orders).where("token != ? OR token != ?", "", nil).pluck('sum(amount)')[0].to_f
     else
-      Order.completed.sum(:price).to_f
+      Order.sum(:price).to_f
     end 
   end
 

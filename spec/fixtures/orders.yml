@@ -1,11 +1,10 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
   user_id: 1
   token: MyString
   transaction_id: MyString
-  address_one: MyString
-  address_two: MyString
+  address_line1: MyString
+  address_line2: MyString
   city: MyString
   state: MyString
   zip: MyString
@@ -19,8 +18,8 @@ one:
 two:
   user_id: 2
   transaction_id: MyString
-  address_one: MyString
-  address_two: MyString
+  address_line1: MyString
+  address_line2: MyString
   city: MyString
   state: MyString
   zip: MyString

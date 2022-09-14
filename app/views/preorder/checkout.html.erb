@@ -3,30 +3,37 @@
     <div class="main_content <%= "payment_options" if Settings.use_payment_options %>">
       <h3>Check out</h3>
       <p>
-        All of your payment information will be secured and stored with Amazon Payments. If you don't have an Amazon account, simply select "I'm a new Customer" on the next page.
-        <br />
-        <br />
         <% if Settings.use_payment_options %>
           Select a payment option and enter your email address below.
         <% else %>
           Enter your email address below.
         <% end %>
+        Payments are powered by <a href="https://stripe.com/">Stripe</a>
 
       </p>
-      <%= form_tag "/preorder/prefill", :id => "checkout" do %>
+      <%= form_tag "#", :id => "checkout" do %>
         <%= render 'preorder/payment_options' %>
         <div class="checkout_controls">
           <div class="checkout_controls_wrapper">
             <div class="checkout_controls_inner">
-              <%= email_field_tag "email", nil, :placeholder => "Email address", :required => "required", :id => "email" %>
-              <%= hidden_field_tag "preorder", true %>
-              <%= hidden_field_tag "quantity", params[:quantity] %>
-              <%= submit_tag "Checkout", :class => "blue_button disabled", :id => "amazon_button" %>
+              <%= text_field_tag "name", nil, :placeholder => "Name", :required => "required", :id => "name" %>
+              <%= email_field_tag "email", nil, :placeholder => "Email", :required => "required", :id => "email" %>
+              <%= text_field_tag "address_line1", nil, :placeholder => "Address line 1", :required => "required", :id => "address_line1" %>
+              <%= text_field_tag "address_line2", nil, :placeholder => "Address line 2", :id => "address_line2" %>
+              <%= text_field_tag "address_zip", nil, :placeholder => "Zipcode", :required => "required", :id => "address_zip", :maxlength => 5 %>
+              <%= text_field_tag "city", nil, :placeholder => "City", :required => "required", :id => "city" %>
+              <%= text_field_tag "country", nil, :placeholder => "Country", :required => "required", :id => "country" %>
+              <%= text_field_tag "card_number", nil, :placeholder => "Credit Card number", :required => "required", :id => "card_number", :name => nil, :maxlength => 16 %>
+              <%= text_field_tag "card_expiry_month", nil, :placeholder => "Expiry month (e.g. 3)", :required => "required", :id => "card_expiry_month", :name => nil, :maxlength => 3 %>
+              <%= text_field_tag "card_expiry_year", nil, :placeholder => "Expiry year (e.g. 2015)", :required => "required", :id => "card_expiry_year", :name => nil, :maxlength => 4 %>
+              <%= text_field_tag "card_cvc", nil, :placeholder => "CVC", :required => "required", :id => "card_cvc", :name => nil, :maxlength => 4 %>
+              <%= submit_tag "Checkout", :class => "blue_button disabled", :id => "checkout_button" %>
             </div>
           </div>
         </div>
       <% end %>
     </div>
     <%= render 'preorder/checkout/sidebar' %>
+    <%= render 'stripe_js' %>
   </div>
 </div>

@@ -14,7 +14,7 @@
   }
   #checkout
   {
-    #email
+    input[type=text], input[type=email]
     {
       padding: 15px;
       border-radius: 10px;
@@ -26,7 +26,7 @@
       {
       border: 1px solid orange;
     }
-    #amazon_button
+    #checkout_button
     {
       margin-top: 5px;
       padding: 15px;
@@ -64,7 +64,7 @@
       }
     }
   }
-  #amazon_button
+  #checkout_button
   {
     display: inline !important;
   }

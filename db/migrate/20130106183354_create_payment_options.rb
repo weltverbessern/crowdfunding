@@ -1,4 +1,4 @@
-class CreatePaymentOptions < ActiveRecord::Migration
+class CreatePaymentOptions < ActiveRecord::Migration[7.0]
   def change
     create_table :payment_options do |t|
       t.decimal :amount

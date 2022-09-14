@@ -36,24 +36,18 @@ video_embed_url: "https://www.youtube.com/v/D1L3o88GKew"
 # NOTE: this only works for youtube video at the moment.  If its not for youtube, then just leave this property blank
 use_video_placeholder: true
 
-# Amazon settings -- you'll need an Amazon Payments account, sign up here --> http://bit.ly/SGksTv
-
-# To find your access key and secret key, head over to here --> http://bit.ly/R4I4ky (Follow that guide in the Seller Central page)
-amazon_access_key: "YOUR_AMAZON_ACCESS_KEY"
-amazon_secret_key: "YOUR_AMAZON_SECRET_KEY"
-price: 	19.95
-
 # if use_payment_options is set to true, then a set of radio buttons will be displayed with various payment options.
 # There is a PaymentOption model for storing info about payment options.  To set up your payment options you should
 # put code in seeds.rb, then run rake db:seed
-use_payment_options: false
+use_payment_options: true
 
-payment_description: "You really should change this text because people will see it on Amazon's order page!!!!!"
+# Payments settings
+price: 19.95
+payment_description: "This is what will appear on your manage.stripe.com dashboard"
 
-# Amazon limits how much we can charge people with their Multi-Use tokens.
-# You probably should add some leeway to account for international shipping
-# this value will be added to the price to create a charge limit
-charge_limit: 25.00
+# Stripe settings -- you'll need a Stripe account, sign up here --> https://manage.stripe.com/register
+# Do you want to use Stripe in Live or Test mode? 'live' or 'test'
+stripe_payments_mode: 'test'
 
 # Stats settings
 
@@ -85,13 +79,10 @@ price_human: "It costs money!"
 dont_give_them_a_reason_to_say_no: "You'll get this exact site. All you'll need to get started is a great product."
 
 # Social Stuff
-facebook_app_id: "1234567890"
+
 # Tweets are prefixed with "I'm #{Settings.primary_stat} number X for #{Settings.product_name}"
 # Maybe mention something about your product vision -- e.g. "to replace keys with my phone"
 tweet_text: "to crowdfund"
-
-# Google Analytics
-google_id: "1234567890"
 
 # If you want to change the images for the key points (e.g. "Kickstarter is not a store")
 # They're in app/assets/images/#{pointer_number}-background.png

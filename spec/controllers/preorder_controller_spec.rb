@@ -1,10 +1,10 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe PreorderController do
   [:index, :checkout].each do |method|
     it "should get #{method}" do
       get method
-      response.should be_success
+      expect(response).to be_successful
     end
   end
 end

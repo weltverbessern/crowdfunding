@@ -1,5 +1,5 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe PaymentOption do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_many :orders }
 end

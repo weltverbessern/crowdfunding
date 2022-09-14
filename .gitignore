@@ -20,6 +20,8 @@ config/environments/*.local.yml
 
 *.sublime-workspace
 .rvmrc
+.rbenv-version
+.ruby-version
 
 # yes, I use an ide
 .idea/*
