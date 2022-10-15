@@ -1,4 +1,4 @@
-module PreorderHelper
+module CrowdfundingHelper
   def share_link_facebook
     raw "<a href='https://www.facebook.com/sharer.php?u=#{encoded_root_url}'>Facebook</a>"
   end

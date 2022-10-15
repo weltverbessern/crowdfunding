@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe PreorderController do
+describe CrowdfundingController do
   [:index, :checkout].each do |method|
     it "should get #{method}" do
       get method

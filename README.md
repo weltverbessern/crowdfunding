@@ -63,7 +63,7 @@ app/assets/stylesheets/variables.css.scss
 To dive into the code, open this file:
 
 ```
-app/controllers/preorder_controller.rb
+app/controllers/crowdfunding_controller.rb
 ```
 
 ### Deploying to Production

@@ -1,7 +1,7 @@
 Selfstarter::Application.routes.draw do
-  root :to => 'preorder#index'
-  match '/preorder'               => 'preorder#index', :via => [:get,:post]
-  get 'preorder/checkout'
-  match '/preorder/checkout' => 'preorder#checkout!', :via => :post
-  match '/preorder/share/:uuid' => 'preorder#share', :via => :get
+  root :to => 'crowdfunding#index'
+  match '/crowdfunding' => 'crowdfunding#index', :via => [:get,:post]
+  get 'crowdfunding/checkout'
+  match '/crowdfunding/checkout' => 'crowdfunding#checkout!', :via => :post
+  match '/crowdfunding/share/:uuid' => 'crowdfunding#share', :via => :get
 end
