@@ -1,27 +1,21 @@
 <% if Settings.use_payment_options %>
-  <fieldset>
-    <div class="payment_options">
-      <ol>
-        <% PaymentOption.all.each_with_index do |p, index| %>
-          <li>
-            <%= radio_button_tag "payment_option", p.id, false, class: 'payment_radio', disabled: sold_out(p) %>
-            <%= label_tag("payment_option_#{index}", p.amount_display) %>
-            <div class="shipping">
-              <% if sold_out p %>
-                <span class="sold-out">Sold Out</span>
-              <% end %>
-              <span><%= p.shipping_desc %></span>
-            </div>
-            <div class="description">
-              <p class="full"><%= raw p.description %></p>
-              <% if p.limit > -1 %>
-                <p class="limited">Limited (<%= p.limit - order_count(p) %> of <%= p.limit %> remaining)</p>
-              <% end %>
-              <p class="delivery_date"><%= p.delivery_desc %></p>
-            </div>
-          </li>
-        <% end %>
-      </ol>
-    </div>
-  </fieldset>
+  <h4 class="mb-3">Payment option</h4>
+  <div class="list-group mx-0 w-auto">
+    <% PaymentOption.all.each_with_index do |p, index| %>
+      <label class="list-group-item d-flex gap-2 p-3">
+        <%= radio_button_tag "payment_option", p.id, false, class: 'form-check-input flex-shrink-0', disabled: sold_out(p) %>
+        <span>
+          <div><%= p.amount_display %></div>
+          <div><%= raw p.description %></div>
+          <small class="d-block text-muted"><%= p.shipping_desc %></small>
+          <% if sold_out p %>
+            <small class="d-block text-danger">Sold Out</small>
+          <% elsif p.limit > -1 %>
+            <small class="d-block text-info">Limited (<%= p.limit - order_count(p) %> of <%= p.limit %> remaining)</small>
+          <% end %>
+          <small class="d-block text-muted"><%= p.delivery_desc %></small>
+        </span>
+      </label>
+    <% end %>
+  </div>
 <% end %>

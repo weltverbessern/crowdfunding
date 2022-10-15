@@ -1,67 +1,60 @@
-<div class="wrapper clearfix">
-  <div id="video">
-    <% if Settings.use_video_placeholder %>
-      <div id="video_image">
-        <img alt="video_place_holder" width='512px' height='385px' src="/assets/video_placeholder.png" />
-      </div>
-      <div id="player" class="hidden" style="display: none;">
-        <object width="512" height="385">
-          <param name="movie" value="<%= Settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" />
-          <param name="allowFullScreen" value="true" />
-          <param name="allowscriptaccess" value="always" />
-          <embed src="<%= Settings.video_embed_url %>?autohide=1&showinfo=0&rel=0&autoplay=1" type="application/x-shockwave-flash" width="512" height="385" allowscriptaccess="always" allowfullscreen="true"></embed>
-        </object>
-      </div>
-    <% else %>
-      <iframe width='512' height='385' src="<%= video_url %>"></iframe>
-    <% end %>
-  </div>
-
-  <div id="backing">
-    <ul>
-      <li class="stats" id="backers">
-        <%= number_with_delimiter Order.backers, :delimiter => "," %>
-        <span><%= Settings.primary_stat %></span>
-      </li>
-      <li class="stats">
-        <%= number_to_currency Order.revenue, :precision => 0 %>
-        <span>of <%= number_to_currency Settings.project_goal.to_f, :precision => 0 %></span>
-      </li>
-
-      <% if Settings.expiration_date.present? %>
-        <li class="stats" id="days">
-          <%= distance_of_time_in_words_to_now(Settings.expiration_date).gsub(/\D/, "") %>
-          <span><%= distance_of_time_in_words_to_now(Settings.expiration_date).gsub(/\d/, "").gsub("about", "") %> left</span>
-        </li>
+<div class="container col-xxl-8 px-4">
+  <div class="row align-items-center justify-content-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6 mt-0">
+      <% if Settings.use_video_placeholder %>
+        <div id="video_image">
+          <img src="/assets/video_placeholder.png" class="d-block mx-lg-auto img-fluid" alt="Video Preview Image" width="512" height="385" loading="lazy">
+        </div>
+        <div id="player" class="hidden ratio ratio-4x3" style="display: none;">
+          <iframe width="512" height="385" src="<%= Settings.video_embed_url %>" title="Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
       <% else %>
-        <li class="stats" id="days">
-            &infin;
-            <span>days left</span>
-          </li>
+        <iframe class="ratio ratio-4x3" width="512" height="385" src="<%= Settings.video_embed_url %>" title="Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <% end %>
-    </ul>
-    
-    <% if Order.revenue.to_f < Order.goal.to_f %>
-      <div id='progress_bg' class='small'>
-        <div id='progress' class='' style='width: <%= Order.percent %>%;'>
-        </div>
-      </div>
-    <% else %>
-      <div id="progress_bg">
-        <div id="progress">
-        </div>
-        <div id='progress_text'><%= Order.percent %>% <%= Settings.progress_text %></div>
-      </div>
-    <% end %>
-    
-    <div id="reserve_container">
-      <p id="ship_date"><%= Settings.ships %></p>
-      <a href="/preorder/checkout" class="blue_button reserve"><%= Settings.call_to_action %></a>
-      <p id="price"><%= Settings.price_human %></p>
-      <p><%= Settings.dont_give_them_a_reason_to_say_no %></p>
-      <%= like_button %>
     </div>
-    
+    <div class="col-lg-6">
+      <ul class="list-group list-group-horizontal-sm">
+        <li class="list-group-item flex-fill">
+          <div class="display-6 fw-bold"><%= number_with_delimiter Order.backers, :delimiter => "," %></div>
+          <div><%= Settings.primary_stat %></div>
+        </li>
+        <li class="list-group-item flex-fill">
+          <div class="display-6 fw-bold"><%= number_to_currency Order.revenue, :precision => 0 %></div>
+          <div>of <%= number_to_currency Settings.project_goal.to_f, :precision => 0 %></div>
+        </li>
+        <li class="list-group-item flex-fill">
+          <% if Settings.expiration_date.present? %>
+            <div class="display-6 fw-bold"><%= distance_of_time_in_words_to_now(Settings.expiration_date).gsub(/\D/, "") %></div>
+            <div><%= distance_of_time_in_words_to_now(Settings.expiration_date).gsub(/\d/, "").gsub("about", "") %> left</div>
+          <% else %>
+            <div class="display-6 fw-bold">&infin;</div>
+            <div>days left</div>
+          <% end %>
+        </li>
+      </ul>
+
+      <div class="progress my-3" style="height: 1.5rem;">
+        <div
+          class="progress-bar"
+          role="progressbar"
+          aria-label="Progress Bar"
+          style="width: <% if Order.revenue.to_f < Order.goal.to_f %><%= Order.percent %><% else %>100<% end %>%;"
+          aria-valuenow="<% if Order.revenue.to_f < Order.goal.to_f %><%= Order.percent %><% else %>100<% end %>"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          <% if Order.revenue.to_f >= Order.goal.to_f %>
+            <%= Order.percent %>% <%= Settings.progress_text %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <p class="lead"><%= Settings.ships %></p>
+        <p><a href="/preorder/checkout" class="btn btn-primary btn-lg px-4 py-2 me-md-2"><%= Settings.call_to_action %></a></p>
+        <p class="lead"><%= Settings.price_human %></p>
+        <p><%= Settings.dont_give_them_a_reason_to_say_no %></p>
+      </div>
+    </div>
   </div>
-  
 </div>

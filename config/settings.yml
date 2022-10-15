@@ -25,8 +25,7 @@ product_image_path: "my-product-image.png"
 value_proposition: "Roll your own crowdfunding"
 
 # YouTube or Vimeo Video URL (The embed URL, without the query string options)
-# Replace /embed/ in your video url path with /v/ for video playback to work.
-video_embed_url: "https://www.youtube.com/v/D1L3o88GKew"
+video_embed_url: "https://www.youtube.com/embed/D1L3o88GKew"
 
 # If set to true, then the image at "/assets/video_placeholder.png" will be shown in place of the youtube
 # video.  When the user clicks it, the vid will replace the image and start playing.
@@ -80,11 +79,4 @@ dont_give_them_a_reason_to_say_no: "You'll get this exact site. All you'll need 
 
 # Social Stuff
 
-# Tweets are prefixed with "I'm #{Settings.primary_stat} number X for #{Settings.product_name}"
-# Maybe mention something about your product vision -- e.g. "to replace keys with my phone"
-tweet_text: "to crowdfund"
-
-# If you want to change the images for the key points (e.g. "Kickstarter is not a store")
-# They're in app/assets/images/#{pointer_number}-background.png
-# So, the first key point, it's at app/assets/images/1-background.png
-# Alternatively, change it up in app/assets/stylesheets/homepage/key_points.css.scss
+share_text: "I just supported this great project"

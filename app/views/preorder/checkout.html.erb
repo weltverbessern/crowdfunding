@@ -1,39 +1,161 @@
-<div class="gray_background">
-  <div class="wrapper clearfix">
-    <div class="main_content <%= "payment_options" if Settings.use_payment_options %>">
-      <h3>Check out</h3>
-      <p>
-        <% if Settings.use_payment_options %>
-          Select a payment option and enter your email address below.
-        <% else %>
-          Enter your email address below.
-        <% end %>
-        Payments are powered by <a href="https://stripe.com/">Stripe</a>
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Check out</h2>
+    <p class="lead">
+      <% if Settings.use_payment_options %>
+        Select a payment option and enter your email address below.
+      <% else %>
+        Enter your email address below.
+      <% end %>
+      Payments are powered by <a href="https://stripe.com/">Stripe</a>.
+    </p>
+  </div>
+</div>
 
-      </p>
-      <%= form_tag "#", :id => "checkout" do %>
-        <%= render 'preorder/payment_options' %>
-        <div class="checkout_controls">
-          <div class="checkout_controls_wrapper">
-            <div class="checkout_controls_inner">
-              <%= text_field_tag "name", nil, :placeholder => "Name", :required => "required", :id => "name" %>
-              <%= email_field_tag "email", nil, :placeholder => "Email", :required => "required", :id => "email" %>
-              <%= text_field_tag "address_line1", nil, :placeholder => "Address line 1", :required => "required", :id => "address_line1" %>
-              <%= text_field_tag "address_line2", nil, :placeholder => "Address line 2", :id => "address_line2" %>
-              <%= text_field_tag "address_zip", nil, :placeholder => "Zipcode", :required => "required", :id => "address_zip", :maxlength => 5 %>
-              <%= text_field_tag "city", nil, :placeholder => "City", :required => "required", :id => "city" %>
-              <%= text_field_tag "country", nil, :placeholder => "Country", :required => "required", :id => "country" %>
-              <%= text_field_tag "card_number", nil, :placeholder => "Credit Card number", :required => "required", :id => "card_number", :name => nil, :maxlength => 16 %>
-              <%= text_field_tag "card_expiry_month", nil, :placeholder => "Expiry month (e.g. 3)", :required => "required", :id => "card_expiry_month", :name => nil, :maxlength => 3 %>
-              <%= text_field_tag "card_expiry_year", nil, :placeholder => "Expiry year (e.g. 2015)", :required => "required", :id => "card_expiry_year", :name => nil, :maxlength => 4 %>
-              <%= text_field_tag "card_cvc", nil, :placeholder => "CVC", :required => "required", :id => "card_cvc", :name => nil, :maxlength => 4 %>
-              <%= submit_tag "Checkout", :class => "blue_button disabled", :id => "checkout_button" %>
+<div class="bg-light border-top border-bottom">
+  <div class="container py-5">
+    <div class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <%= render 'preorder/checkout/sidebar' %>
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <%= form_tag "#", :id => "checkout", :class => "needs-validation", :novalidate => "novalidate" do %>
+          <%= render 'preorder/payment_options' %>
+
+          <hr class="my-4">
+
+          <h4 class="mb-3">Billing address</h4>
+
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="first_name" class="form-label">First name</label>
+              <%= text_field_tag "first_name", nil, :id => "first_name", :class => "form-control", :placeholder => "", :required => "required" %>
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="last_name" class="form-label">Last name</label>
+              <%= text_field_tag "last_name", nil, :id => "last_name", :class => "form-control", :placeholder => "", :required => "required" %>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Email</label>
+              <%= email_field_tag "email", nil, :id => "email", :class => "form-control", :placeholder => "", :required => "required" %>
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address_line1" class="form-label">Address</label>
+              <%= text_field_tag "address_line1", nil, :id => "address_line1", :class => "form-control", :placeholder => "", :required => "required" %>
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address_line2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
+              <%= text_field_tag "address_line2", nil, :id => "address_line2", :class => "form-control", :placeholder => "" %>
+            </div>
+
+            <div class="col-md-4">
+              <label for="address_zip" class="form-label">Zip</label>
+              <%= text_field_tag "address_zip", nil, :id => "address_zip", :class => "form-control", :placeholder => "", :required => "required", :maxlength => 5 %>
+              <div class="invalid-feedback">
+                Zip code required.
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <label for="city" class="form-label">City</label>
+              <%= text_field_tag "city", nil, :id => "city", :class => "form-control", :placeholder => "", :required => "required" %>
+            </div>
+
+            <div class="col-12">
+              <label for="country" class="form-label">Country</label>
+              <%= select_tag "country", options_for_select(ISO3166::Country.all), :id => "country", :class => "form-select", :required => "required", :include_blank => true %>
+              <div class="invalid-feedback">
+                Please select a valid country.
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+
+          <hr class="my-4">
+
+          <h4 class="mb-3">Payment</h4>
+
+          <!--
+          <div class="my-3">
+            <div class="form-check">
+              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+              <label class="form-check-label" for="credit">Credit card</label>
+            </div>
+            <div class="form-check">
+              <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="debit">Debit card</label>
+            </div>
+            <div class="form-check">
+              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="paypal">PayPal</label>
+            </div>
+          </div>
+          -->
+
+          <div class="row gy-3">
+            <div class="col-md-6">
+              <label for="card_name" class="form-label">Name on card</label>
+              <%= text_field_tag "card_name", nil, :id => "card_name", :class => "form-control", :placeholder => "", :required => "required" %>
+              <small class="text-muted">Full name as displayed on card</small>
+              <div class="invalid-feedback">
+                Name on card is required
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="card_number" class="form-label">Credit card number</label>
+              <%= text_field_tag "card_number", nil, :id => "card_number", :class => "form-control", :placeholder => "", :required => "required", :name => nil, :maxlength => 16 %>
+              <div class="invalid-feedback">
+                Credit card number is required
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="card_expiry_month" class="form-label">Expiration Month</label>
+              <%= select_tag "card_expiry_month", options_for_select('01'.upto('12')), :id => "card_expiry_month", :class => "form-select", :required => "required", :include_blank => true %>
+              <div class="invalid-feedback">
+                Expiration month required
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="card_expiry_year" class="form-label">Expiration Year</label>
+              <%= select_tag "card_expiry_year", options_for_select(Date.today.year .. 8.years.from_now.year), :id => "card_expiry_year", :class => "form-select", :required => "required", :include_blank => true %>
+              <div class="invalid-feedback">
+                Expiration year required
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="card_cvc" class="form-label">CVC</label>
+              <%= text_field_tag "card_cvc", nil, :id => "card_cvc", :class => "form-control", :placeholder => "", :required => "required", :name => nil, :maxlength => 4 %>
+              <div class="invalid-feedback">
+                Security code required
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <%= submit_tag "Checkout", :class => "w-100 btn btn-primary btn-lg" %>
+        <% end %>
+      </div>
     </div>
-    <%= render 'preorder/checkout/sidebar' %>
     <%= render 'stripe_js' %>
   </div>
 </div>

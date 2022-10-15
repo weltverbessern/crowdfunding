@@ -59,7 +59,7 @@ describe Order do
       it "returns the number of orders with valid token" do
         Order.delete_all
         @order = Order.generate
-        @order.name = 'marin'
+        @order.product_name = 'marin'
         @order.user_id = 1
         @order.price = 123.21
         expect(Order.backers).to eq(0)
@@ -74,7 +74,7 @@ describe Order do
 
   describe "validators" do
 
-    it { should validate_presence_of :name }
+    it { should validate_presence_of :product_name }
     it { should validate_presence_of :price }
     it { should validate_presence_of :user_id }
 

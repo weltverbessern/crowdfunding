@@ -1,0 +1,9 @@
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+// See https://github.com/twbs/bootstrap-rubygem/blob/main/assets/stylesheets/bootstrap/_variables.scss
+
+@import "bootstrap";
+
+// Don't show a footer border if the last container has background
+.bg-light + .container footer {
+    border-top: none !important;
+}

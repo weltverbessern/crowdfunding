@@ -28,9 +28,11 @@ class PreorderController < ApplicationController
     # Create an order for this user.
     @order = Order.generate
     @order.stripe_customer_id = customer.id
-    @order.name = Settings.product_name
+    @order.product_name = Settings.product_name
     @order.price = price
     @order.user_id = @user.id
+    @order.first_name = params[:first_name]
+    @order.last_name = params[:last_name]
     @order.address_line1 = params[:address_line1]
     @order.address_line2 = params[:address_line2]
     @order.city = params[:city]

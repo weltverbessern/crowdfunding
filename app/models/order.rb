@@ -47,5 +47,5 @@ class Order < ActiveRecord::Base
     end 
   end
 
-  validates_presence_of :name, :price, :user_id
+  validates_presence_of :product_name, :price, :user_id
 end

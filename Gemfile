@@ -20,7 +20,6 @@ end
 # in production environments by default.
 group :assets do
   gem 'sass-rails'
-  gem 'coffee-rails'
   gem 'uglifier'
 end
 
@@ -29,9 +28,15 @@ group :development, :test do
   gem 'shoulda'
 end
 
+# Bootstrap
+gem 'bootstrap', '~> 5.2.0'
+
 # jQuery
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+
+# Countries for select box
+gem 'countries'
 
 # Stripe gem
 gem 'stripe'

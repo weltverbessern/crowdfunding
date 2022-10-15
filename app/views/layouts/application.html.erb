@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en">
   <head>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= Settings.product_name %></title>
-    <%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application" %>
   </head>
-  <!--[if lt IE 9 ]><body class="lt-ie9"><![endif]-->
-  <!--[if (gt IE 9)|!(IE)]><!--> <body><!--<![endif]-->
-    <%= render 'preorder/header' %>
+  <body>
+    <%= render 'layouts/icons' %>
+    <%= render 'layouts/header' %>
     <%= yield %>
-    <%= render 'preorder/footer' %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
