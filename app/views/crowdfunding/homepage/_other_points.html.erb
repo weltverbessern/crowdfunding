@@ -1,30 +1,16 @@
-<div class="bg-light border-top border-bottom">
-  <div class="container text-center py-5">
-    <div class="row g-2">
-      <div class="col-md-6">
-        <div class="p-3">
-          <h1 class="fs-2 fw-bold lh-1 mb-3">Section 1</h1>
-          <p>Morbi tempus dapibus egestas. Nullam accumsan dolor ut purus ornare congue. Phasellus ac commodo neque. Quisque non ligula lacus, id hendrerit eros.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="p-3">
-          <h1 class="fs-2 fw-bold lh-1 mb-3">Section 2</h1>
-          <p>Vivamus nec posuere mauris. Suspendisse mi sem, egestas ac tristique ac, varius ac lectus. Sed porttitor dolor adipiscing mauris sagittis.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="p-3">
-          <h1 class="fs-2 fw-bold lh-1 mb-3">Section 3</h1>
-          <p>Curabitur dolor elit, placerat et malesuada et, tristique vel nulla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="p-3">
-          <h1 class="fs-2 fw-bold lh-1 mb-3">Section 4</h1>
-          <p>Curabitur ac mi elit, nec tempor odio. Nam sollicitudin, sapien sit amet elementum pretium, turpis mi fermentum nisl, ac vehicula purus lacus non velit.</p>
-        </div>
+<% if Settings.num_other_points > 0 %>
+  <div class="bg-light border-top border-bottom">
+    <div class="container text-center py-5">
+      <div class="row g-2">
+        <% (1..Settings.num_other_points).each do |other_point_num| %>
+          <div class="col-md-6">
+            <div class="p-3">
+              <h1 class="fs-2 fw-bold lh-1 mb-3"><%= t(".#{other_point_num}.title") %></h1>
+              <p><%= t(".#{other_point_num}.text") %></p>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
-</div>
+<% end %>

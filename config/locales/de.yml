@@ -1,0 +1,165 @@
+de:
+  project:
+    name: "Dein Traum-Projekt"
+    copyright: "© Du"
+    twitter_url: "#"
+    instagram_url: "#"
+    facebook_url: "#"
+  general:
+    delimiter: "."
+    datetime:
+      distance_in_words:
+        about_x_hours:
+          one: "1 Stunde"
+          other: "%{count} Stunden"
+        about_x_months:
+          one: "1 Monat"
+          other: "%{count} Monate"
+        about_x_years:
+          one: "1 Jahr"
+          other: "%{count} Jahre"
+        almost_x_years:
+          one: "1 Jahr"
+          other: "%{count} Jahre"
+        half_a_minute: "30 Sekunden"
+        less_than_x_seconds:
+          one: "1 Sekunde"
+          other: "%{count} Sekunden"
+        less_than_x_minutes:
+          one: "1 Minute"
+          other: "%{count} Minuten"
+        over_x_years:
+          one: "1 Jahr"
+          other: "%{count} Jahre"
+        x_seconds:
+          one: "1 Sekunde"
+          other: "%{count} Sekunden"
+        x_minutes:
+          one: "1 Minute"
+          other: "%{count} Minuten"
+        x_days:
+          one: "1 Tag"
+          other: "%{count} Tage"
+        x_months:
+          one: "1 Monat"
+          other: "%{count} Monate"
+        x_years:
+          one: "1 Jahr"
+          other: "%{count} Jahre"
+  crowdfunding:
+    homepage:
+      value_proposition:
+        title: "Überzeuge in einem Satz"
+      stats:
+        video_placeholder_img_url: "https://picsum.photos/512/385"
+        video_placeholder_img_alt: "Video-Vorschaubild"
+        video_placeholder_button_color: "#fff"
+        video_embed_url: "https://www.youtube-nocookie.com/embed/D1L3o88GKew"
+        backers: "Unterstützende"
+        of: "von"
+        left: "übrig"
+        days_left: "Tage übrig"
+        implemented: "erreicht"
+        ships: "Versand voraussichtlich ab September"
+        cta: "Jetzt vorbestellen"
+        price_human: "Nur 149 € für begrenzte Zeit"
+        dont_give_them_a_reason_to_say_no: "Du zahlst nur, wenn das Ziel erreicht wird."
+      key_points:
+        1:
+          title: "Dein wichtigster Punkt"
+          text: "Erzähle, was du machst und warum das wichtig ist. Welches wirklich wichtige Problem löst deine Idee?"
+          img_url: "https://picsum.photos/700/500?random=1"
+          img_alt: "Ein Bild"
+        2:
+          title: "Dein zweiter Punkt"
+          text: "Erzähle, was du machst und warum das wichtig ist. Welches wirklich wichtige Problem löst deine Idee?"
+          img_url: "https://picsum.photos/700/500?random=2"
+          img_alt: "Ein Bild"
+        3:
+          title: "Ein weiterer Punkt"
+          text: "Erzähle, was du machst und warum das wichtig ist. Welches wirklich wichtige Problem löst deine Idee?"
+          img_url: "https://picsum.photos/700/500?random=3"
+          img_alt: "Ein Bild"
+        4:
+          title: "Ein weiterer Punkt"
+          text: "Erzähle, was du machst und warum das wichtig ist. Welches wirklich wichtige Problem löst deine Idee?"
+          img_url: "https://picsum.photos/700/500?random=4"
+          img_alt: "Ein Bild"
+      other_points:
+        1:
+          title: "Noch etwas"
+          text: "Noch mehr Text"
+        2:
+          title: "Noch etwas"
+          text: "Noch mehr Text"
+        3:
+          title: "Noch etwas"
+          text: "Noch mehr Text"
+        4:
+          title: "Noch etwas"
+          text: "Noch mehr Text"
+      middle_cta:
+        title: "Sei jetzt dabei!"
+        button: "Jetzt vorbestellen"
+      faqs:
+        title: "Fragen & Antworten"
+        1:
+          question: "Frage 1"
+          answer: "Antwort 1"
+        2:
+          question: "Frage 2"
+          answer: "Antwort 2"
+        3:
+          question: "Frage 3"
+          answer: "Antwort 3"
+        4:
+          question: "Frage 4"
+          answer: "Antwort 4"
+        5:
+          question: "Frage 5"
+          answer: "Antwort 5"
+        6:
+          question: "Frage 6"
+          answer: "Antwort 6"
+        7:
+          question: "Frage 7"
+          answer: "Antwort 7"
+        8:
+          question: "Frage 8"
+          answer: "Antwort 8"
+    checkout:
+      headline: "Danke, dass du uns unterstützt"
+      encouragement: "Hier kannst du nochmal einen Satz hinzufügen, warum es so wichtig ist, dass man dein Projekt unterstützt"
+      billing_address: "Rechnungsadresse"
+      invalid_field: "Bitte überprüfe dieses Feld"
+      first_name: "Vorname"
+      last_name: "Nachname"
+      email: "E-Mail"
+      address_line1: "Straße und Hausnummer"
+      address_line2: "Adresszusatz"
+      optional: "(optional)"
+      address_zip: "Postleitzahl"
+      city: "Stadt"
+      country: "Land"
+      payment: "Zahlung"
+      card_name: "Name auf der Karte"
+      card_name_detail: "Vollständiger Name wie auf der Karte"
+      card_number: "Kartennummer"
+      card_expiry_month: "Ablaufsmonat"
+      card_expiry_year: "Ablaufsjahr"
+      card_cvc: "CVC"
+      button: "Kostenpflichtig bestellen"
+      sidebar:
+        payment_info_title: "Wie erfolgt die Zahlung?"
+        payment_info_text: "Füge hier Informationen hinzu, wie die Zahlung erfolgt und wann der Betrag eingezogen wird."
+      incentives:
+        incentives: "Pakete"
+        sold_out: "ausverkauft"
+        limited: "%{available} von %{total} übrig"
+    share:
+      hooray: "Juhuu! Du hast dir deine Vorbestellung gesichert"
+      backer_number: "Glückwunsch, du bist unsere Nummer %{backer_number}, die uns unterstützt."
+      please_share: "Vielen Dank! Berichte jetzt gerne über uns weiter:"
+      reservation_id: "Reservierungs-ID: %{reservation_id}. Du kannst dir diese ID für deine Unterlagen abspeichern."
+      share_text: "Ich habe gerade dieses tolle Projekt unterstützt:"
+      share_image_url: "https://picsum.photos/512/385"

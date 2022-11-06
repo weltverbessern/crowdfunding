@@ -20,5 +20,7 @@ module Selfstarter
     config.assets.version = '1.0'
     # --- Standard Rails Config ---
     ActiveRecord.legacy_connection_handling = false
+
+    config.i18n.available_locales = Settings.available_locales || [:en, :de]
   end
 end

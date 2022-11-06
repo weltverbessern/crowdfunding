@@ -44,5 +44,9 @@ gem 'stripe'
 # Configuration File
 gem 'rails_config'
 
+# i18n
+gem 'rails-i18n'
+gem 'i18n-active_record', require: 'i18n/active_record'
+
 # For Heroku
 gem 'rails_12factor'

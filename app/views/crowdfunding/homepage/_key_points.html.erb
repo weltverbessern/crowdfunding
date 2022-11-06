@@ -1,55 +1,23 @@
-<div class="container"><hr></div>
-
-<div class="container col-xxl-8 px-4 py-5">
-  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-    <div class="col-10 col-sm-8 col-lg-6">
-      <img src="https://picsum.photos/700/500?random=1" class="d-block mx-lg-auto img-fluid" alt="Demo Image" width="700" height="500" loading="lazy">
+<% if Settings.num_key_points > 0 %>
+  <% (1..Settings.num_key_points).each do |key_point_num| %>
+    <div class="container"><hr></div>
+    <div class="container col-xxl-8 px-4 py-5">
+      <div class="row <% if key_point_num.odd? %>flex-lg-row-reverse <% end %>align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+          <img
+            src="<%= t(".#{key_point_num}.img_url") %>"
+            class="d-block mx-lg-auto img-fluid"
+            alt="<%= t(".#{key_point_num}.img_alt") %>"
+            width="700"
+            height="500"
+            loading="lazy"
+          >
+        </div>
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold lh-1 mb-3"><%= t(".#{key_point_num}.title") %></h1>
+          <p class="lead"><%= t(".#{key_point_num}.text") %></p>
+        </div>
+      </div>
     </div>
-    <div class="col-lg-6">
-      <h1 class="display-5 fw-bold lh-1 mb-3">What is Selfstarter?</h1>
-      <p class="lead">Selfstarter is an open source starting point for building your own ad-hoc crowdfunding site. It was put together by <a href="https://lockitron.com">Lockitron</a> after they were <a href="http://techcrunch.com/2012/10/07/the-story-of-lockitron-crowdfunding-without-kickstarter/">turned down from Kickstarter</a>.</p>
-    </div>
-  </div>
-</div>
-
-<div class="container"><hr></div>
-
-<div class="container col-xxl-8 px-4 py-5">
-  <div class="row align-items-center g-5 py-5">
-    <div class="col-10 col-sm-8 col-lg-6">
-      <img src="https://picsum.photos/700/500?random=2" class="d-block mx-lg-auto img-fluid" alt="Demo Image" width="700" height="500" loading="lazy">
-    </div>
-    <div class="col-lg-6">
-      <h1 class="display-5 fw-bold lh-1 mb-3">How do I use it?</h1>
-      <p class="lead">Selfstarter is a starting point for you to build your own solution. It is set up to collect reservations using Stripe, but you can choose your own provider too.</p>
-    </div>
-  </div>
-</div>
-
-<div class="container"><hr></div>
-
-<div class="container col-xxl-8 px-4 py-5">
-  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-    <div class="col-10 col-sm-8 col-lg-6">
-      <img src="https://picsum.photos/700/500?random=3" class="d-block mx-lg-auto img-fluid" alt="Demo Image" width="700" height="500" loading="lazy">
-    </div>
-    <div class="col-lg-6">
-      <h1 class="display-5 fw-bold lh-1 mb-3">It's just a skeleton</h1>
-      <p class="lead">We've kept Selfstarter really simple, but that also means that you should beef it up with your own authentication, administration and product management code.</p>
-    </div>
-  </div>
-</div>
-
-<div class="container"><hr></div>
-
-<div class="container col-xxl-8 px-4 py-5">
-  <div class="row align-items-center g-5 py-5">
-    <div class="col-10 col-sm-8 col-lg-6">
-      <img src="https://picsum.photos/700/500?random=4" class="d-block mx-lg-auto img-fluid" alt="Demo Image" width="700" height="500" loading="lazy">
-    </div>
-    <div class="col-lg-6">
-      <h1 class="display-5 fw-bold lh-1 mb-3">Let's get started</h1>
-      <p class="lead">Most of what you need to get started is in the Readme. Selfstarter is based on Ruby on Rails, and we've tried to break up all of the different parts in a sensible fashion.</p>
-    </div>
-  </div>
-</div>
+  <% end %>
+<% end %>

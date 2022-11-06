@@ -24,8 +24,6 @@ class Order < ActiveRecord::Base
     end while Order.find_by(:uuid => self.uuid).present?
   end
 
-  # goal is a dollar amount, not a number of backers, beause you may be using the multiple payment options component
-  # by setting Settings.use_payment_options == true
   def self.goal
     Settings.project_goal
   end
@@ -40,7 +38,7 @@ class Order < ActiveRecord::Base
   end
 
   def self.revenue
-    if Settings.use_payment_options
+    if PaymentOption.exists?
       PaymentOption.joins(:orders).where("token != ? OR token != ?", "", nil).pluck('sum(amount)')[0].to_f
     else
       Order.sum(:price).to_f

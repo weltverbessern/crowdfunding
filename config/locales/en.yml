@@ -1,5 +1,165 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  project:
+    name: "Your Dream Projekt"
+    copyright: "© You"
+    twitter_url: "#"
+    instagram_url: "#"
+    facebook_url: "#"
+  general:
+    delimiter: ","
+    datetime:
+      distance_in_words:
+        about_x_hours:
+          one: "1 hour"
+          other: "%{count} hours"
+        about_x_months:
+          one: "1 month"
+          other: "%{count} months"
+        about_x_years:
+          one: "1 year"
+          other: "%{count} years"
+        almost_x_years:
+          one: "1 year"
+          other: "%{count} years"
+        half_a_minute: "30 seconds"
+        less_than_x_seconds:
+          one: "1 second"
+          other: "%{count} seconds"
+        less_than_x_minutes:
+          one: "1 minute"
+          other: "%{count} minutes"
+        over_x_years:
+          one: "1 year"
+          other: "%{count} years"
+        x_seconds:
+          one: "1 second"
+          other: "%{count} seconds"
+        x_minutes:
+          one: "1 minute"
+          other: "%{count} minutes"
+        x_days:
+          one: "1 day"
+          other: "%{count} days"
+        x_months:
+          one: "1 month"
+          other: "%{count} months"
+        x_years:
+          one: "1 year"
+          other: "%{count} years"
+  crowdfunding:
+    homepage:
+      value_proposition:
+        title: "Convince in one sentence"
+      stats:
+        video_placeholder_img_url: "https://picsum.photos/512/385"
+        video_placeholder_img_alt: "Video Preview Image"
+        video_placeholder_button_color: "#fff"
+        video_embed_url: "https://www.youtube-nocookie.com/embed/D1L3o88GKew"
+        backers: "backers"
+        of: "of"
+        left: "left"
+        days_left: "days left"
+        implemented: "implemented"
+        ships: "Shipping expected from September"
+        cta: "Reserve Now"
+        price_human: "Only $149 for a limited time"
+        dont_give_them_a_reason_to_say_no: "You will be charged only if the goal is reached."
+      key_points:
+        1:
+          title: "Your most important point"
+          text: "Tell what you're doing and why it's important. Which truly important problem does your idea solve?"
+          img_url: "https://picsum.photos/700/500?random=1"
+          img_alt: "An image"
+        2:
+          title: "Your second point"
+          text: "Tell what you're doing and why it's important. Which truly important problem does your idea solve?"
+          img_url: "https://picsum.photos/700/500?random=2"
+          img_alt: "An image"
+        3:
+          title: "One more point"
+          text: "Tell what you're doing and why it's important. Which truly important problem does your idea solve?"
+          img_url: "https://picsum.photos/700/500?random=3"
+          img_alt: "An image"
+        4:
+          title: "One more point"
+          text: "Tell what you're doing and why it's important. Which truly important problem does your idea solve?"
+          img_url: "https://picsum.photos/700/500?random=4"
+          img_alt: "An image"
+      other_points:
+        1:
+          title: "Another thing"
+          text: "Even more text"
+        2:
+          title: "Another thing"
+          text: "Even more text"
+        3:
+          title: "Another thing"
+          text: "Even more text"
+        4:
+          title: "Another thing"
+          text: "Even more text"
+      middle_cta:
+        title: "Join now!"
+        button: "Preorder now"
+      faqs:
+        title: "Frequently Asked Questions"
+        1:
+          question: "Question 1"
+          answer: "Answer 1"
+        2:
+          question: "Question 2"
+          answer: "Answer 2"
+        3:
+          question: "Question 3"
+          answer: "Answer 3"
+        4:
+          question: "Question 4"
+          answer: "Answer 4"
+        5:
+          question: "Question 5"
+          answer: "Answer 5"
+        6:
+          question: "Question 6"
+          answer: "Answer 6"
+        7:
+          question: "Question 7"
+          answer: "Answer 7"
+        8:
+          question: "Question 8"
+          answer: "Answer 8"
+    checkout:
+      headline: "Thank you for your support"
+      encouragement: "You can add another sentence here about why it is so important that people support your project"
+      billing_address: "Billing Address"
+      invalid_field: "Please check this field"
+      first_name: "First Name"
+      last_name: "Last Name"
+      email: "Email"
+      address_line1: "Address Line 1"
+      address_line2: "Address Line 2"
+      optional: "(optional)"
+      address_zip: "Zip Code"
+      city: "City"
+      country: "Country"
+      payment: "Payment"
+      card_name: "Name on Card"
+      card_name_detail: "Full name as displayed on card"
+      card_number: "Card Number"
+      card_expiry_month: "Expiry Month"
+      card_expiry_year: "Expiry Year"
+      card_cvc: "CVC"
+      button: "Buy Now"
+      sidebar:
+        payment_info_title: "When will I be charged?"
+        payment_info_text: "Add some information how the payment works and when your backers get charged."
+      incentives:
+        incentives: "Packages"
+        sold_out: "sold out"
+        limited: "%{available} of %{total} remaining"
+    share:
+      hooray: "Hooray! You've just reserved your pre-order"
+      backer_number: "Congratulations, you're backer number %{backer_number} in supporting us."
+      please_share: "Thank you very much! Please share the great news:"
+      reservation_id: "Reservation ID: %{reservation_id}. You can save this ID for your records."
+      share_text: "I just supported this great project:"
+      share_image_url: "https://picsum.photos/512/385"

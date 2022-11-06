@@ -1,34 +1,79 @@
 <div class="container col-xxl-8 px-4">
   <div class="row align-items-center justify-content-center g-5 py-5">
-    <div class="col-10 col-sm-8 col-lg-6 mt-0">
-      <% if Settings.use_video_placeholder %>
-        <div id="video_image">
-          <img src="/assets/video_placeholder.png" class="d-block mx-lg-auto img-fluid" alt="Video Preview Image" width="512" height="385" loading="lazy">
+    <div class="col-10 col-sm-8 col-lg-6 mt-5">
+      <% unless t('.video_placeholder_img_url').empty? %>
+        <div id="video_image" class="position-relative" style="cursor: pointer;">
+          <svg
+            class="bi position-absolute top-50 start-50"
+            width="72"
+            height="72"
+            fill="<%= t('.video_placeholder_button_color') %>"
+            style="transform: translate(-50%, -50%);"
+          >
+            <use xlink:href="#play-btn-fill"/>
+          </svg>
+          <img
+            src="<%= t('.video_placeholder_img_url') %>"
+            class="d-block mx-lg-auto img-fluid"
+            alt="<%= t('.video_placeholder_img_alt') %>"
+            width="512"
+            height="385"
+            loading="lazy"
+          >
         </div>
         <div id="player" class="hidden ratio ratio-4x3" style="display: none;">
-          <iframe width="512" height="385" src="<%= Settings.video_embed_url %>" title="Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe
+            width="512"
+            height="385"
+            src="<%= t('.video_embed_url') %>"
+            title="Video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
         </div>
       <% else %>
-        <iframe class="ratio ratio-4x3" width="512" height="385" src="<%= Settings.video_embed_url %>" title="Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe
+          class="ratio ratio-4x3"
+          width="512"
+          height="385"
+          src="<%= t('.video_embed_url') %>"
+          title="Video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
       <% end %>
     </div>
     <div class="col-lg-6">
       <ul class="list-group list-group-horizontal-sm">
         <li class="list-group-item flex-fill">
-          <div class="display-6 fw-bold"><%= number_with_delimiter Order.backers, :delimiter => "," %></div>
-          <div><%= Settings.primary_stat %></div>
+          <div class="display-6 fw-bold">
+            <%= number_with_delimiter Order.backers, :delimiter => t('general.delimiter') %>
+          </div>
+          <div><%= t('.backers') %></div>
         </li>
         <li class="list-group-item flex-fill">
-          <div class="display-6 fw-bold"><%= number_to_currency Order.revenue, :precision => 0 %></div>
-          <div>of <%= number_to_currency Settings.project_goal.to_f, :precision => 0 %></div>
+          <div class="display-6 fw-bold">
+            <%= number_to_currency Order.revenue, :precision => 0, :unit => Settings.currency_unit %>
+          </div>
+          <div>
+            <%= t('.of') %>
+            <%= number_to_currency Settings.project_goal.to_f, :precision => 0, :unit => Settings.currency_unit %>
+          </div>
         </li>
         <li class="list-group-item flex-fill">
           <% if Settings.expiration_date.present? %>
-            <div class="display-6 fw-bold"><%= distance_of_time_in_words_to_now(Settings.expiration_date).gsub(/\D/, "") %></div>
-            <div><%= distance_of_time_in_words_to_now(Settings.expiration_date).gsub(/\d/, "").gsub("about", "") %> left</div>
+            <div class="display-6 fw-bold">
+              <%= distance_of_time_in_words_to_now(Settings.expiration_date, scope: "general.datetime.distance_in_words").gsub(/\D/, "") %>
+            </div>
+            <div>
+              <%= distance_of_time_in_words_to_now(Settings.expiration_date, scope: "general.datetime.distance_in_words").gsub(/\d/, "") %>
+              <%= t('.left') %>
+            </div>
           <% else %>
             <div class="display-6 fw-bold">&infin;</div>
-            <div>days left</div>
+            <div><%= t('.days_left') %></div>
           <% end %>
         </li>
       </ul>
@@ -44,16 +89,18 @@
           aria-valuemax="100"
         >
           <% if Order.revenue.to_f >= Order.goal.to_f %>
-            <%= Order.percent %>% <%= Settings.progress_text %>
+            <%= Order.percent %>% <%= t('.implemented') %>
           <% end %>
         </div>
       </div>
 
       <div class="text-center">
-        <p class="lead"><%= Settings.ships %></p>
-        <p><a href="/crowdfunding/checkout" class="btn btn-primary btn-lg px-4 py-2 me-md-2"><%= Settings.call_to_action %></a></p>
-        <p class="lead"><%= Settings.price_human %></p>
-        <p><%= Settings.dont_give_them_a_reason_to_say_no %></p>
+        <p class="lead"><%= t('.ships') %></p>
+        <p>
+          <%= link_to t('.cta'), crowdfunding_checkout_path, :class => 'btn btn-primary btn-lg px-4 py-2 me-md-2' %>
+        </p>
+        <p class="lead"><%= t('.price_human') %></p>
+        <p><%= t('.dont_give_them_a_reason_to_say_no') %></p>
       </div>
     </div>
   </div>

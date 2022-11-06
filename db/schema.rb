@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_15_124713) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_15_155042) do
   create_table "orders", id: false, force: :cascade do |t|
     t.string "token"
     t.string "transaction_id"
@@ -46,6 +46,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_124713) do
     t.string "shipping_desc"
     t.string "delivery_desc"
     t.integer "limit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "translations", force: :cascade do |t|
+    t.string "locale"
+    t.string "key"
+    t.text "value"
+    t.text "interpolations"
+    t.boolean "is_proc", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

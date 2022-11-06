@@ -1,5 +1,5 @@
-<% if Settings.use_payment_options %>
-  <h4 class="mb-3">Payment option</h4>
+<% if PaymentOption.exists? %>
+  <h4 class="mb-3"><%= t('.incentives') %></h4>
   <div class="list-group mx-0 w-auto">
     <% PaymentOption.all.each_with_index do |p, index| %>
       <label class="list-group-item d-flex gap-2 p-3">
@@ -9,9 +9,11 @@
           <div><%= raw p.description %></div>
           <small class="d-block text-muted"><%= p.shipping_desc %></small>
           <% if sold_out p %>
-            <small class="d-block text-danger">Sold Out</small>
+            <small class="d-block text-danger"><%= t('.sold_out') %></small>
           <% elsif p.limit > -1 %>
-            <small class="d-block text-info">Limited (<%= p.limit - order_count(p) %> of <%= p.limit %> remaining)</small>
+            <small class="d-block text-info">
+              <%= t('.limited', available: p.limit - order_count(p), total: p.limit) %>
+            </small>
           <% end %>
           <small class="d-block text-muted"><%= p.delivery_desc %></small>
         </span>

@@ -1,13 +1,9 @@
 <div class="container">
   <div class="py-5 text-center">
-    <h2>Hooray! You've just reserved <%= Settings.product_description %>!</h2>
+    <h2><%= t('.hooray') %></h2>
     <p class="lead">
-      Congratulations, you're <%= Settings.primary_stat_verb %> number
-      <span class="text-success fw-bold">
-        <%= number_with_delimiter Order.backers, :delimiter => "," %>
-      </span>
-      in supporting <%= Settings.product_name %>.
-      Share the great news!
+      <%= t('.backer_number', backer_number: Order.backers) %><br>
+      <%= t('.please_share') %>
     </p>
     <div class="hstack gap-3 pb-5 justify-content-center">
       <div><%= share_link_pinterest %></div>
@@ -17,7 +13,7 @@
       <div><%= share_link_facebook %></div>
     </div>
     <small class="d-block text-muted">
-      Reservation ID: <%= @order.uuid %>. You can bookmark or print this page for your records.
+      <%= t('.reservation_id', reservation_id: @order.uuid) %>
     </small>
   </div>
 </div>

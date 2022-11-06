@@ -3,11 +3,13 @@ module CrowdfundingHelper
     raw "<a href='https://www.facebook.com/sharer.php?u=#{encoded_root_url}'>Facebook</a>"
   end
   def share_link_pinterest
-    image_url = URI.encode_www_form_component("#{request.scheme}://#{request.host}#{image_path(Settings.product_image_path)}")
-    raw "<a href='https://pinterest.com/pin/create/bookmarklet/?media=#{image_url}&url=#{encoded_root_url}&description=#{Settings.share_text}'>Pinterest</a>"
+    image_url = URI.encode_www_form_component t('crowdfunding.share.share_image_url')
+    share_text = URI.encode_www_form_component t('crowdfunding.share.share_text')
+    raw "<a href='https://pinterest.com/pin/create/bookmarklet/?media=#{image_url}&url=#{encoded_root_url}&description=#{share_text}'>Pinterest</a>"
   end
   def share_link_twitter
-    raw "<a href='https://twitter.com/share?url=#{encoded_root_url}&text=#{Settings.share_text}'>Twitter</a>"
+    share_text = URI.encode_www_form_component t('crowdfunding.share.share_text')
+    raw "<a href='https://twitter.com/share?url=#{encoded_root_url}&text=#{share_text}'>Twitter</a>"
   end
 
   def encoded_root_url

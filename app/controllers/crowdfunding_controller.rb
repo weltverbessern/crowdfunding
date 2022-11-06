@@ -16,7 +16,7 @@ class CrowdfundingController < ApplicationController
       :card => params[:stripe_token]
     )
 
-    if Settings.use_payment_options
+    if PaymentOption.exists?
       payment_option_id = params['payment_option']
       raise Exception.new("No payment option was selected") if payment_option_id.nil?
       payment_option = PaymentOption.find(payment_option_id)
@@ -28,7 +28,7 @@ class CrowdfundingController < ApplicationController
     # Create an order for this user.
     @order = Order.generate
     @order.stripe_customer_id = customer.id
-    @order.product_name = Settings.product_name
+    @order.product_name = t('project.name')
     @order.price = price
     @order.user_id = @user.id
     @order.first_name = params[:first_name]
