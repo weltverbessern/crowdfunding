@@ -1,6 +1,8 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 // See https://github.com/twbs/bootstrap-rubygem/blob/main/assets/stylesheets/bootstrap/_variables.scss
 
+$primary: #003399; // One World Flag color: https://1worldflag.com/flag/
+
 @import "bootstrap";
 
 // Don't show a footer border if the last container has background

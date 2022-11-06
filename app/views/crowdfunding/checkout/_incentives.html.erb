@@ -11,7 +11,7 @@
           <% if sold_out p %>
             <small class="d-block text-danger"><%= t('.sold_out') %></small>
           <% elsif p.limit > -1 %>
-            <small class="d-block text-info">
+            <small class="d-block text-primary">
               <%= t('.limited', available: p.limit - order_count(p), total: p.limit) %>
             </small>
           <% end %>
