@@ -2,9 +2,9 @@ available_locales: ["en", "de"]
 default_locale: "de"
 
 currency_unit: "€"
-project_goal: 100000
-price: 19.95
-expiration_date: <%= DateTime.now + 29.days %>
+project_goal: 10000
+price: 19.90
+# expiration_date: <%= DateTime.now + 29.days %>
 
 num_key_points: 4
 num_other_points: 4
