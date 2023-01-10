@@ -38,8 +38,9 @@ gem 'jquery-ui-rails'
 # Countries for select box
 gem 'countries'
 
-# Stripe gem
-gem 'stripe'
+# Payment
+gem 'activemerchant'
+gem 'rexml'
 
 # Configuration File
 gem 'rails_config'

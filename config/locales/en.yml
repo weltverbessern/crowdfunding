@@ -130,7 +130,7 @@ en:
     checkout:
       headline: "Thank you for your support"
       encouragement: "You can add another sentence here about why it is so important that people support your project"
-      billing_address: "Billing Address"
+      your_address: "Your Address"
       invalid_field: "Please check this field"
       first_name: "First Name"
       last_name: "Last Name"
@@ -141,21 +141,27 @@ en:
       address_zip: "Zip Code"
       city: "City"
       country: "Country"
-      payment: "Payment"
-      card_name: "Name on Card"
-      card_name_detail: "Full name as displayed on card"
-      card_number: "Card Number"
-      card_expiry_month: "Expiry Month"
-      card_expiry_year: "Expiry Year"
-      card_cvc: "CVC"
-      button: "Buy Now"
+      button: "Continue to payment"
       sidebar:
-        payment_info_title: "When will I be charged?"
-        payment_info_text: "Add some information how the payment works and when your backers get charged."
+        title: "Checkout sidebar"
+        text: "Here you can place more information about the packages, about shipping or even a fun fact."
       incentives:
         incentives: "Packages"
         sold_out: "sold out"
         limited: "%{available} of %{total} remaining"
+      error:
+        incentive_missing: "Please select a package."
+        payment_method_missing: "Please select a payment method."
+    pay:
+      headline: "Very good choice"
+      encouragement: "Now you simply need to enter your payment information"
+      payment: "Payment"
+      button: "Buy Now"
+      sidebar:
+        title: "Payment sidebar"
+        text: "Here you can place more information about payment or even a fun fact."
+      error:
+        payment_failed: "The payment was not successful. Please try again, if necessary with another payment method."
     share:
       hooray: "Hooray! You've just reserved your pre-order"
       backer_number: "Congratulations, you're backer number %{backer_number} in supporting us."

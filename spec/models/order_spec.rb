@@ -56,7 +56,7 @@ describe Order do
     end
 
     describe ".backers" do
-      it "returns the number of orders with valid token" do
+      it "returns the number of orders" do
         Order.delete_all
         @order = Order.generate
         @order.product_name = 'marin'

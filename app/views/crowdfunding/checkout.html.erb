@@ -12,122 +12,71 @@
         <%= render 'crowdfunding/checkout/sidebar' %>
       </div>
       <div class="col-md-7 col-lg-8">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, class: "alert alert-#{name}", role: 'alert' unless name == 'params' %>
+        <% end %>
         <%= form_tag "#", :id => "checkout", :class => "needs-validation", :novalidate => "novalidate" do %>
           <%= render 'crowdfunding/checkout/incentives' %>
 
           <hr class="my-4">
 
-          <h4 class="mb-3"><%= t('.billing_address') %></h4>
+          <h4 class="mb-3"><%= t('.your_address') %></h4>
 
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="first_name" class="form-label"><%= t('.first_name') %></label>
-              <%= text_field_tag "first_name", nil, :id => "first_name", :class => "form-control", :placeholder => "", :required => "required" %>
+              <%= text_field_tag "first_name", flash[:params] && flash[:params][:first_name], :id => "first_name", :class => "form-control", :placeholder => "", :required => "required" %>
               <div class="invalid-feedback"><%= t('.invalid_field') %></div>
             </div>
 
             <div class="col-sm-6">
               <label for="last_name" class="form-label"><%= t('.last_name') %></label>
-              <%= text_field_tag "last_name", nil, :id => "last_name", :class => "form-control", :placeholder => "", :required => "required" %>
+              <%= text_field_tag "last_name", flash[:params] && flash[:params][:last_name], :id => "last_name", :class => "form-control", :placeholder => "", :required => "required" %>
               <div class="invalid-feedback"><%= t('.invalid_field') %></div>
             </div>
 
             <div class="col-12">
               <label for="email" class="form-label"><%= t('.email') %></label>
-              <%= email_field_tag "email", nil, :id => "email", :class => "form-control", :placeholder => "", :required => "required" %>
+              <%= email_field_tag "email", flash[:params] && flash[:params][:email], :id => "email", :class => "form-control", :placeholder => "", :required => "required" %>
               <div class="invalid-feedback"><%= t('.invalid_field') %></div>
             </div>
 
             <div class="col-12">
               <label for="address_line1" class="form-label"><%= t('.address_line1') %></label>
-              <%= text_field_tag "address_line1", nil, :id => "address_line1", :class => "form-control", :placeholder => "", :required => "required" %>
+              <%= text_field_tag "address_line1", flash[:params] && flash[:params][:address_line1], :id => "address_line1", :class => "form-control", :placeholder => "", :required => "required" %>
               <div class="invalid-feedback"><%= t('.invalid_field') %></div>
             </div>
 
             <div class="col-12">
               <label for="address_line2" class="form-label"><%= t('.address_line2') %> <span class="text-muted"><%= t('.optional') %></span></label>
-              <%= text_field_tag "address_line2", nil, :id => "address_line2", :class => "form-control", :placeholder => "" %>
+              <%= text_field_tag "address_line2", flash[:params] && flash[:params][:address_line2], :id => "address_line2", :class => "form-control", :placeholder => "" %>
             </div>
 
             <div class="col-md-4">
               <label for="address_zip" class="form-label"><%= t('.address_zip') %></label>
-              <%= text_field_tag "address_zip", nil, :id => "address_zip", :class => "form-control", :placeholder => "", :required => "required", :maxlength => 5 %>
+              <%= text_field_tag "address_zip", flash[:params] && flash[:params][:address_zip], :id => "address_zip", :class => "form-control", :placeholder => "", :required => "required", :maxlength => 5 %>
               <div class="invalid-feedback"><%= t('.invalid_field') %></div>
             </div>
 
             <div class="col-md-8">
               <label for="city" class="form-label"><%= t('.city') %></label>
-              <%= text_field_tag "city", nil, :id => "city", :class => "form-control", :placeholder => "", :required => "required" %>
+              <%= text_field_tag "city", flash[:params] && flash[:params][:city], :id => "city", :class => "form-control", :placeholder => "", :required => "required" %>
               <div class="invalid-feedback"><%= t('.invalid_field') %></div>
             </div>
 
             <div class="col-12">
               <label for="country" class="form-label"><%= t('.country') %></label>
-              <%= select_tag "country", options_for_select(ISO3166::Country.all), :id => "country", :class => "form-select", :required => "required", :include_blank => true %>
+              <%= select_tag "country", options_for_select(ISO3166::Country.all, flash[:params] && flash[:params][:country]), :id => "country", :class => "form-select", :required => "required", :include_blank => true %>
               <div class="invalid-feedback"><%= t('.invalid_field') %></div>
             </div>
           </div>
 
           <hr class="my-4">
-
-          <h4 class="mb-3"><%= t('.payment') %></h4>
-
-          <!--
-          <div class="my-3">
-            <div class="form-check">
-              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-              <label class="form-check-label" for="credit">Credit card</label>
-            </div>
-            <div class="form-check">
-              <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-              <label class="form-check-label" for="debit">Debit card</label>
-            </div>
-            <div class="form-check">
-              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-              <label class="form-check-label" for="paypal">PayPal</label>
-            </div>
-          </div>
-          -->
-
-          <div class="row gy-3">
-            <div class="col-md-6">
-              <label for="card_name" class="form-label"><%= t('.card_name') %></label>
-              <%= text_field_tag "card_name", nil, :id => "card_name", :class => "form-control", :placeholder => "", :required => "required" %>
-              <small class="text-muted"><%= t('.card_name_detail') %></small>
-              <div class="invalid-feedback"><%= t('.invalid_field') %></div>
-            </div>
-
-            <div class="col-md-6">
-              <label for="card_number" class="form-label"><%= t('.card_number') %></label>
-              <%= text_field_tag "card_number", nil, :id => "card_number", :class => "form-control", :placeholder => "", :required => "required", :name => nil, :maxlength => 16 %>
-              <div class="invalid-feedback"><%= t('.invalid_field') %></div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="card_expiry_month" class="form-label"><%= t('.card_expiry_month') %></label>
-              <%= select_tag "card_expiry_month", options_for_select('01'.upto('12')), :id => "card_expiry_month", :class => "form-select", :required => "required", :include_blank => true %>
-              <div class="invalid-feedback"><%= t('.invalid_field') %></div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="card_expiry_year" class="form-label"><%= t('.card_expiry_year') %></label>
-              <%= select_tag "card_expiry_year", options_for_select(Date.today.year .. 8.years.from_now.year), :id => "card_expiry_year", :class => "form-select", :required => "required", :include_blank => true %>
-              <div class="invalid-feedback"><%= t('.invalid_field') %></div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="card_cvc" class="form-label"><%= t('.card_cvc') %></label>
-              <%= text_field_tag "card_cvc", nil, :id => "card_cvc", :class => "form-control", :placeholder => "", :required => "required", :name => nil, :maxlength => 4 %>
-              <div class="invalid-feedback"><%= t('.invalid_field') %></div>
-            </div>
-          </div>
-
-          <hr class="my-4">
+          <input id="payment_method_stripe" name="payment_method" type="hidden" value="stripe">
 
           <%= submit_tag t('.button'), :class => "w-100 btn btn-primary btn-lg" %>
         <% end %>
       </div>
     </div>
-    <%= render 'crowdfunding/checkout/stripe_js' %>
   </div>
 </div>

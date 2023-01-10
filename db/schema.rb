@@ -10,33 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_15_155042) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_07_134245) do
   create_table "orders", id: false, force: :cascade do |t|
-    t.string "token"
-    t.string "transaction_id"
     t.string "address_line1"
     t.string "address_line2"
     t.string "city"
     t.string "state"
     t.string "zip"
     t.string "country"
-    t.string "status"
-    t.string "number"
     t.string "uuid"
     t.string "user_id"
     t.decimal "price"
-    t.decimal "shipping"
-    t.string "tracking_number"
     t.string "phone"
     t.string "product_name"
-    t.date "expiration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "payment_option_id"
     t.integer "order_number"
-    t.string "stripe_customer_id"
+    t.string "payment_ref"
     t.string "first_name"
     t.string "last_name"
+    t.string "payment_mode"
+    t.string "payment_provider"
+    t.string "payment_status"
   end
 
   create_table "payment_options", force: :cascade do |t|

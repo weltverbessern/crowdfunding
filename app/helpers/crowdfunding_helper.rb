@@ -21,6 +21,11 @@ module CrowdfundingHelper
   end
 
   def order_count(payment_option)
-    Order.where(payment_option_id: payment_option).count(:token)
+    Order.where(
+      'payment_option_id == ? and (payment_status = ? or payment_status = ?)',
+      payment_option,
+      'completed',
+      'processing'
+    ).count
   end
 end

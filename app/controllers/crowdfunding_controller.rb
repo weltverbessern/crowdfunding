@@ -1,54 +1,100 @@
-class CrowdfundingController < ApplicationController
-  skip_before_action :verify_authenticity_token, :only => :ipn
+require 'active_merchant'
 
+class CrowdfundingController < ApplicationController
   def index
   end
 
   def checkout!
-    @user = User.find_or_create_by(:email => params[:email])
-    redirect_to root_url unless params[:stripe_token]
-
-    # Create a Stripe customer that we can charge later, and
-    # attach the customer ID to the User object.
-    customer = Stripe::Customer.create(
-      :description => "Customer for #{params[:email]}",
-      :email => params[:email],
-      :card => params[:stripe_token]
+    permitted = params.permit(
+      :email,
+      :payment_option,
+      :first_name,
+      :last_name,
+      :address_line1,
+      :address_line2,
+      :address_zip,
+      :city,
+      :state,
+      :phone,
+      :country,
+      :payment_method,
     )
+    show_error = Proc.new do |message|
+      flash[:danger] = message
+      flash[:params] = permitted.to_h
+      redirect_to :action => :checkout
+      return
+    end
+
+    @user = User.find_or_create_by(:email => permitted[:email])
 
     if PaymentOption.exists?
-      payment_option_id = params['payment_option']
-      raise Exception.new("No payment option was selected") if payment_option_id.nil?
+      payment_option_id = permitted[:payment_option]
+      show_error.call t('crowdfunding.checkout.error.incentive_missing') if payment_option_id.nil?
       payment_option = PaymentOption.find(payment_option_id)
       price = payment_option.amount
     else
       price = Settings.price
     end
 
-    # Create an order for this user.
+    if Settings.payment_provider_stripe && permitted[:payment_method] == 'stripe'
+      purchase_options = {
+        currency: Settings.currency,
+        automatic_payment_methods: {
+          enabled: true,
+        },
+      }
+      intent = GATEWAY_STRIPE.create_intent((price * 100).round, nil, purchase_options)
+      payment_ref = intent.params['id']
+    else
+      show_error.call t('crowdfunding.checkout.error.payment_method_missing')
+    end
+
     @order = Order.generate
-    @order.stripe_customer_id = customer.id
     @order.product_name = t('project.name')
+    @order.payment_mode = Settings.payment_mode
+    @order.payment_provider = permitted[:payment_method]
+    @order.payment_ref = payment_ref
+    @order.payment_status = 'pending'
+    @order.payment_option_id = permitted[:payment_option]
     @order.price = price
     @order.user_id = @user.id
-    @order.first_name = params[:first_name]
-    @order.last_name = params[:last_name]
-    @order.address_line1 = params[:address_line1]
-    @order.address_line2 = params[:address_line2]
-    @order.city = params[:city]
-    @order.state = params[:state]
-    @order.phone = params[:phone]
-    @order.zip = params[:address_zip]
-    @order.country = params[:country]
+    @order.first_name = permitted[:first_name]
+    @order.last_name = permitted[:last_name]
+    @order.address_line1 = permitted[:address_line1]
+    @order.address_line2 = permitted[:address_line2]
+    @order.city = permitted[:city]
+    @order.state = permitted[:state]
+    @order.phone = permitted[:phone]
+    @order.zip = permitted[:address_zip]
+    @order.country = permitted[:country]
     @order.save!
 
-    redirect_to :action => :share, :uuid => @order.uuid
+    redirect_to :action => :pay, :uuid => @order.uuid
+  end
+
+  def pay
+    @order = Order.find_by(:uuid => params[:uuid])
+
+    if @order.payment_provider == 'stripe'
+      intent = GATEWAY_STRIPE.show_intent(@order.payment_ref, {})
+      @client_secret = intent.params['client_secret']
+
+      if intent.params['status'] == 'processing'
+        @order.payment_status = 'processing'
+        @order.save!
+        redirect_to :action => :share, :uuid => @order.uuid
+      end
+
+      if intent.params['status'] == 'succeeded'
+        @order.payment_status = 'completed'
+        @order.save!
+        redirect_to :action => :share, :uuid => @order.uuid
+      end
+    end
   end
 
   def share
     @order = Order.find_by(:uuid => params[:uuid])
-  end
-
-  def ipn
   end
 end

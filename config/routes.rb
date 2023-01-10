@@ -4,6 +4,7 @@ Selfstarter::Application.routes.draw do
     match '/crowdfunding' => 'crowdfunding#index', :via => [:get,:post]
     get 'crowdfunding/checkout'
     match '/crowdfunding/checkout' => 'crowdfunding#checkout!', :via => :post
+    match '/crowdfunding/pay' => 'crowdfunding#pay', :via => [:get,:post]
     match '/crowdfunding/share/:uuid' => 'crowdfunding#share', :via => :get
   end
 end

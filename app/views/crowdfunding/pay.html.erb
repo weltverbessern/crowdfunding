@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2><%= t('.headline') %></h2>
+    <p class="lead"><%= t('.encouragement') %></p>
+  </div>
+</div>
+
+<div class="bg-light border-top border-bottom">
+  <div class="container py-5">
+    <div class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <%= render 'crowdfunding/pay/sidebar' %>
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, class: "alert alert-#{name}", role: 'alert' unless name == 'params' %>
+        <% end %>
+        <div id="payment-message" class="alert alert-danger d-none" role="alert"></div>
+        <%= form_tag "#", :id => "payment-form", :class => "needs-validation", :novalidate => "novalidate" do %>
+
+          <h4 class="mb-3"><%= t('.payment') %></h4>
+
+          <% if @order.payment_provider == 'stripe' %>
+            <%= render 'crowdfunding/pay/payment_provider/stripe' %>
+          <% end %>
+
+          <hr class="my-4">
+
+          <%= submit_tag t('.button'), :id => "submit", :class => "w-100 btn btn-primary btn-lg" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

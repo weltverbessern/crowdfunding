@@ -49,6 +49,11 @@ GEM
     activejob (7.0.3.1)
       activesupport (= 7.0.3.1)
       globalid (>= 0.3.6)
+    activemerchant (1.126.0)
+      activesupport (>= 4.2)
+      builder (>= 2.1.2, < 4.0.0)
+      i18n (>= 0.6.9)
+      nokogiri (~> 1.4)
     activemodel (7.0.3.1)
       activesupport (= 7.0.3.1)
     activerecord (7.0.3.1)
@@ -207,6 +212,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    rexml (3.2.5)
     rspec-core (3.11.0)
       rspec-support (~> 3.11.0)
     rspec-expectations (3.11.0)
@@ -249,7 +255,6 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.5.0-x86_64-darwin)
-    stripe (7.1.0)
     strscan (3.0.4)
     thin (1.8.1)
       daemons (~> 1.0, >= 1.0.9)
@@ -271,6 +276,7 @@ PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
+  activemerchant
   bootstrap (~> 5.2.0)
   config
   countries
@@ -284,11 +290,11 @@ DEPENDENCIES
   rails-i18n
   rails_12factor
   rails_config
+  rexml
   rspec-rails
   sass-rails
   shoulda
   sqlite3
-  stripe
   thin
   uglifier
 

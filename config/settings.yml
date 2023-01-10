@@ -1,7 +1,8 @@
 available_locales: ["en", "de"]
 default_locale: "de"
 
-currency_unit: "€"
+currency: "EUR"
+currency_symbol: "€"
 project_goal: 10000
 price: 19.90
 # expiration_date: <%= DateTime.now + 29.days %>
@@ -10,4 +11,5 @@ num_key_points: 4
 num_other_points: 4
 num_faqs: 8
 
-stripe_payments_mode: 'test'
+payment_mode: 'test'
+payment_provider_stripe: true

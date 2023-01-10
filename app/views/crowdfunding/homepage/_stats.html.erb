@@ -55,11 +55,11 @@
         </li>
         <li class="list-group-item flex-fill">
           <div class="display-6 fw-bold">
-            <%= number_to_currency Order.revenue, :precision => 0, :unit => Settings.currency_unit %>
+            <%= number_to_currency Order.revenue, :precision => 0, :unit => Settings.currency_symbol %>
           </div>
           <div>
             <%= t('.of') %>
-            <%= number_to_currency Settings.project_goal.to_f, :precision => 0, :unit => Settings.currency_unit %>
+            <%= number_to_currency Settings.project_goal.to_f, :precision => 0, :unit => Settings.currency_symbol %>
           </div>
         </li>
         <li class="list-group-item flex-fill">

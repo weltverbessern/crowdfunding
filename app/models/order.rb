@@ -32,14 +32,17 @@ class Order < ActiveRecord::Base
     (Order.revenue.to_f / Order.goal.to_f) * 100.to_f
   end
 
-  # See what it looks like when you have some backers! Drop in a number instead of Order.count
   def self.backers
     Order.count
   end
 
   def self.revenue
     if PaymentOption.exists?
-      PaymentOption.joins(:orders).where("token != ? OR token != ?", "", nil).pluck('sum(amount)')[0].to_f
+      PaymentOption.joins(:orders).where(
+        'payment_status = ? or payment_status = ?',
+        'completed',
+        'processing'
+      ).pluck('sum(amount)')[0].to_f
     else
       Order.sum(:price).to_f
     end 
