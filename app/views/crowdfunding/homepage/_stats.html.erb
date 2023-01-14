@@ -97,7 +97,11 @@
       <div class="text-center">
         <p class="lead"><%= t('.ships') %></p>
         <p>
-          <%= link_to t('.cta'), crowdfunding_checkout_path, :class => 'btn btn-primary btn-lg px-4 py-2 me-md-2' %>
+          <%=
+            link_to t('.cta'),
+            t('crowdfunding.homepage.cta_url', default: crowdfunding_checkout_path),
+            :class => 'btn btn-primary btn-lg px-4 py-2 me-md-2'
+          %>
         </p>
         <p class="lead"><%= t('.price_human') %></p>
         <p><%= t('.dont_give_them_a_reason_to_say_no') %></p>

@@ -4,14 +4,23 @@
       <span class="fs-4 fw-bold"><%= t('project.name') %></span>
     </a>
 
-    <!--
     <ul class="nav nav-pills">
-      <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+      <% (1..9).each do |nav_num| %>
+        <% unless t("nav.#{nav_num}.url", default: '').empty? %>
+          <li class="nav-item">
+            <a
+              href="<%= t("nav.#{nav_num}.url") %>"
+              <% if request.original_fullpath == t("nav.#{nav_num}.url") %>
+                class="nav-link active" aria-current="page"
+              <% else %>
+                class="nav-link"
+              <% end %>
+            >
+              <%= t("nav.#{nav_num}.text") %>
+            </a>
+          </li>
+        <% end %>
+      <% end %>
     </ul>
-    -->
   </header>
 </div>
