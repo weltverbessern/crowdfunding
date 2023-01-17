@@ -1,4 +1,4 @@
-Selfstarter::Application.routes.draw do
+Weltverbessern::Application.routes.draw do
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     root :to => 'crowdfunding#index'
     match '/crowdfunding' => 'crowdfunding#index', :via => [:get,:post]

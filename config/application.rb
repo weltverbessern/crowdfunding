@@ -6,8 +6,7 @@ if defined?(Bundler)
   Bundler.require(*Rails.groups(:assets => %w(development test)))
 end
 
-module Selfstarter
-  
+module Weltverbessern
   class Application < Rails::Application
 
     # --- Standard Rails Config ---
