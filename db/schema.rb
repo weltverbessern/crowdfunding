@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_07_134245) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_20_144555) do
+  create_table "incentives", force: :cascade do |t|
+    t.decimal "amount"
+    t.string "amount_display"
+    t.text "description"
+    t.string "shipping_desc"
+    t.string "delivery_desc"
+    t.integer "limit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", id: false, force: :cascade do |t|
     t.string "address_line1"
     t.string "address_line2"
@@ -25,7 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_07_134245) do
     t.string "product_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "payment_option_id"
+    t.integer "incentive_id"
     t.integer "order_number"
     t.string "payment_ref"
     t.string "first_name"
@@ -33,17 +44,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_07_134245) do
     t.string "payment_mode"
     t.string "payment_provider"
     t.string "payment_status"
-  end
-
-  create_table "payment_options", force: :cascade do |t|
-    t.decimal "amount"
-    t.string "amount_display"
-    t.text "description"
-    t.string "shipping_desc"
-    t.string "delivery_desc"
-    t.integer "limit"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "translations", force: :cascade do |t|

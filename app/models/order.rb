@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   before_validation :generate_uuid!, :on => :create
   belongs_to :user
-  belongs_to :payment_option
+  belongs_to :incentive
   self.primary_key = 'uuid'
 
   def self.generate
@@ -37,8 +37,8 @@ class Order < ActiveRecord::Base
   end
 
   def self.revenue
-    if PaymentOption.exists?
-      PaymentOption.joins(:orders).where(
+    if Incentive.exists?
+      Incentive.joins(:orders).where(
         'payment_status = ? or payment_status = ?',
         'completed',
         'processing'

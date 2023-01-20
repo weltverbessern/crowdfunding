@@ -7,7 +7,7 @@ class CrowdfundingController < ApplicationController
   def checkout!
     permitted = params.permit(
       :email,
-      :payment_option,
+      :incentive,
       :first_name,
       :last_name,
       :address_line1,
@@ -28,11 +28,11 @@ class CrowdfundingController < ApplicationController
 
     @user = User.find_or_create_by(:email => permitted[:email])
 
-    if PaymentOption.exists?
-      payment_option_id = permitted[:payment_option]
-      show_error.call t('crowdfunding.checkout.error.incentive_missing') if payment_option_id.nil?
-      payment_option = PaymentOption.find(payment_option_id)
-      price = payment_option.amount
+    if Incentive.exists?
+      incentive_id = permitted[:incentive]
+      show_error.call t('crowdfunding.checkout.error.incentive_missing') if incentive_id.nil?
+      incentive = Incentive.find(incentive_id)
+      price = incentive.amount
     else
       price = Settings.price
     end
@@ -56,7 +56,7 @@ class CrowdfundingController < ApplicationController
     @order.payment_provider = permitted[:payment_method]
     @order.payment_ref = payment_ref
     @order.payment_status = 'pending'
-    @order.payment_option_id = permitted[:payment_option]
+    @order.incentive_id = permitted[:incentive]
     @order.price = price
     @order.user_id = @user.id
     @order.first_name = permitted[:first_name]

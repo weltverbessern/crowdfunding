@@ -16,14 +16,14 @@ module CrowdfundingHelper
     raw URI.encode_www_form_component "#{request.scheme}://#{request.host}/"
   end
 
-  def sold_out(payment_option)
-    payment_option.limit > -1 and order_count(payment_option) >= payment_option.limit
+  def sold_out(incentive)
+    incentive.limit > -1 and order_count(incentive) >= incentive.limit
   end
 
-  def order_count(payment_option)
+  def order_count(incentive)
     Order.where(
-      'payment_option_id = ? and (payment_status = ? or payment_status = ?)',
-      payment_option,
+      'incentive_id = ? and (payment_status = ? or payment_status = ?)',
+      incentive,
       'completed',
       'processing'
     ).count

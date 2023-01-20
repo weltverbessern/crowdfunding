@@ -1,9 +1,9 @@
-<% if PaymentOption.exists? %>
+<% if Incentive.exists? %>
   <h4 class="mb-3"><%= t('.incentives') %></h4>
   <div class="list-group mx-0 w-auto">
-    <% PaymentOption.all.each_with_index do |p, index| %>
+    <% Incentive.all.each_with_index do |p, index| %>
       <label class="list-group-item d-flex gap-2 p-3">
-        <%= radio_button_tag "payment_option", p.id, false, class: 'form-check-input flex-shrink-0', disabled: sold_out(p) %>
+        <%= radio_button_tag "incentive", p.id, false, class: 'form-check-input flex-shrink-0', disabled: sold_out(p) %>
         <span>
           <div><%= p.amount_display %></div>
           <div><%= raw p.description %></div>
