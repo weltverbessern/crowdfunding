@@ -49,5 +49,10 @@ gem 'rails_config'
 gem 'rails-i18n'
 gem 'i18n-active_record', require: 'i18n/active_record'
 
+# Administration interface
+gem 'trestle'
+gem 'trestle-auth'
+gem 'trestle-search'
+
 # For Heroku
 gem 'rails_12factor'

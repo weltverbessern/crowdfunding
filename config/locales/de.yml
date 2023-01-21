@@ -1,6 +1,6 @@
 de:
   project:
-    name: "Dein Traum-Projekt"
+    name: "Dein Projekt"
     copyright: "© Du"
     twitter_url: "#"
     instagram_url: "#"
@@ -169,3 +169,112 @@ de:
       reservation_id: "Reservierungs-ID: %{reservation_id}. Du kannst dir diese ID für deine Unterlagen abspeichern."
       share_text: "Ich habe gerade dieses tolle Projekt unterstützt:"
       share_image_url: "https://picsum.photos/512/385"
+  admin:
+    auth:
+      my_account: "Mein Account"
+      logout: "Ausloggen"
+    groups:
+      content: "Inhalte"
+      outcome: "Resultate"
+      configuration: "Konfiguration"
+    incentives:
+      breadcrumbs:
+        index: "Pakete"
+      titles:
+        index: "Belohnungen, die deine Fans begeistern"
+        edit: "Paket bearbeiten"
+        new: "Neues Paket"
+      table:
+        headers:
+          amount: "Betrag"
+          description: "Beschreibung"
+          limit: "Limit"
+      form:
+        fields:
+          amount: "Betrag (als Zahl)"
+          amount_display: "Betrag (Anzeige)"
+          description: "Beschreibung"
+          shipping_desc: "Hinweis für Versand"
+          limit: "Limit (unbegrenzt: -1)"
+    orders:
+      breadcrumbs:
+        index: "Vorbestellungen"
+      titles:
+        index: "Schritt für Schritt die Welt verbessern"
+        edit: "Vorbestellung bearbeiten"
+      table:
+        headers:
+          order_number: "Bestellnummer"
+          user: "Kontakt"
+          incentive: "Paket"
+          price: "Betrag"
+          created_at: "Bestelldatum"
+          payment_status: "Zahlungseingang"
+          payment_status_pending: "nein"
+      form:
+        fields:
+          order_number: "Bestellnummer"
+          payment_status: "Zahlungsstatus"
+          user: "Kontakt"
+          first_name: "Vorname"
+          last_name: "Nachname"
+          address_line1: "Adresszeile 1"
+          address_line2: "Adresszeile 2"
+          zip: "PLZ"
+          city: "Stadt"
+          country: "Land"
+    translations:
+      breadcrumbs:
+        index: "Texte"
+      titles:
+        index: "Du findest die richtigen Worte"
+        edit: "Text bearbeiten"
+      table:
+        headers:
+          locale: "Sprache"
+          key: "Schlüssel"
+          value: "Text"
+      form:
+        fields:
+          locale: "Sprache"
+          key: "Schlüssel"
+          value: "Text"
+    users:
+      breadcrumbs:
+        index: "Kontakte"
+      titles:
+        index: "Menschen, die an dich glauben"
+        edit: "Kontakt bearbeiten"
+        new: "Neuer Kontakt"
+      table:
+        headers:
+          id: "ID"
+          email: "E-Mail-Adresse"
+          created_at: "Erstellt am"
+      form:
+        fields:
+          email: "E-Mail-Adresse"
+    "auth/admins":
+      breadcrumbs:
+        index: "Admins"
+      titles:
+        index: "Stelle dein bestes Team der Welt zusammen"
+        edit: "Admin bearbeiten"
+        new: "Admin hinzufügen"
+      table:
+        headers:
+          email: "E-Mail-Adresse"
+          first_name: "Vorname"
+          last_name: "Nachname"
+      form:
+        fields:
+          email: "E-Mail-Adresse"
+          first_name: "Vorname"
+          last_name: "Nachname"
+          password: "Passwort"
+          password_confirmation: "Passwort bestätigen"
+    "auth/account":
+      breadcrumbs:
+        index: "Account"
+      titles:
+        edit: "Account bearbeiten"

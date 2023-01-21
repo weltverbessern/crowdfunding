@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_20_144555) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_20_201826) do
+  create_table "admins", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "remember_token"
+    t.datetime "remember_token_expires_at"
+    t.string "locale"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "incentives", force: :cascade do |t|
     t.decimal "amount"
     t.string "amount_display"

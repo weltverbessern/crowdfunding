@@ -1,6 +1,6 @@
 en:
   project:
-    name: "Your Dream Project"
+    name: "Your Project"
     copyright: "© You"
     twitter_url: "#"
     instagram_url: "#"
@@ -169,3 +169,112 @@ en:
       reservation_id: "Reservation ID: %{reservation_id}. You can save this ID for your records."
       share_text: "I just supported this great project:"
       share_image_url: "https://picsum.photos/512/385"
+  admin:
+    auth:
+      my_account: "My Account"
+      logout: "Logout"
+    groups:
+      content: "Content"
+      outcome: "Outcome"
+      configuration: "Configuration"
+    incentives:
+      breadcrumbs:
+        index: "Packages"
+      titles:
+        index: "Incentives that will excite your fans"
+        edit: "Edit Package"
+        new: "New Package"
+      table:
+        headers:
+          amount: "Amount"
+          description: "Description"
+          limit: "Limit"
+      form:
+        fields:
+          amount: "Amount (as a number)"
+          amount_display: "Amount (for display)"
+          description: "Description"
+          shipping_desc: "Shipping Information"
+          limit: "Limit (unlimited: -1)"
+    orders:
+      breadcrumbs:
+        index: "Orders"
+      titles:
+        index: "Changing the world one step at a time"
+        edit: "Edit Order"
+      table:
+        headers:
+          order_number: "Order Number"
+          user: "Contact"
+          incentive: "Package"
+          price: "Price"
+          created_at: "Order Date"
+          payment_status: "Payment received"
+          payment_status_pending: "no"
+      form:
+        fields:
+          order_number: "Order Number"
+          payment_status: "Payment Status"
+          user: "Contact"
+          first_name: "First Name"
+          last_name: "Last Name"
+          address_line1: "Address Line 1"
+          address_line2: "Address Line 2"
+          zip: "Zip"
+          city: "City"
+          country: "Country"
+    translations:
+      breadcrumbs:
+        index: "Texts"
+      titles:
+        index: "You will find the right words"
+        edit: "Edit Text"
+      table:
+        headers:
+          locale: "Language"
+          key: "Key"
+          value: "Text"
+      form:
+        fields:
+          locale: "Language"
+          key: "Key"
+          value: "Text"
+    users:
+      breadcrumbs:
+        index: "Contacts"
+      titles:
+        index: "People who believe in you"
+        edit: "Edit Contact"
+        new: "New Contact"
+      table:
+        headers:
+          id: "ID"
+          email: "Email Address"
+          created_at: "Created at"
+      form:
+        fields:
+          email: "Email Address"
+    "auth/admins":
+      breadcrumbs:
+        index: "Admins"
+      titles:
+        index: "Build your best team in the world"
+        edit: "Edit Admin"
+        new: "Add Admin"
+      table:
+        headers:
+          email: "Email Address"
+          first_name: "First Name"
+          last_name: "Last Name"
+      form:
+        fields:
+          email: "Email Address"
+          first_name: "First Name"
+          last_name: "Last Name"
+          password: "Password"
+          password_confirmation: "Password Confirmation"
+    "auth/account":
+      breadcrumbs:
+        index: "Account"
+      titles:
+        edit: "Edit Account"

@@ -1,4 +1,4 @@
-class Order < ActiveRecord::Base
+class Order < ApplicationRecord
   before_validation :generate_uuid!, :on => :create
   belongs_to :user
   belongs_to :incentive

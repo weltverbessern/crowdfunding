@@ -73,6 +73,7 @@ GEM
       tzinfo (~> 2.0)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
+    bcrypt (3.1.18)
     bootstrap (5.2.2)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.6, < 3)
@@ -138,6 +139,18 @@ GEM
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     json (2.6.2)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -266,6 +279,16 @@ GEM
     thor (1.2.1)
     tilt (2.0.11)
     timeout (0.3.0)
+    trestle (0.9.7)
+      activemodel (>= 4.2.0)
+      kaminari (>= 1.1.0)
+      railties (>= 4.2.0)
+      sprockets-rails (>= 2.0.0)
+    trestle-auth (0.4.4)
+      bcrypt (~> 3.1.7)
+      trestle (~> 0.9.0, >= 0.9.3)
+    trestle-search (0.4.3)
+      trestle (~> 0.9.0, >= 0.9.3)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     uglifier (4.2.0)
@@ -300,6 +323,9 @@ DEPENDENCIES
   shoulda
   sqlite3
   thin
+  trestle
+  trestle-auth
+  trestle-search
   uglifier
 
 RUBY VERSION
