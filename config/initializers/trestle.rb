@@ -1,6 +1,6 @@
 Trestle.configure do |config|
-  config.site_title = '/admin'
-  config.root_breadcrumbs = -> { [Trestle::Breadcrumb.new('/admin', Trestle.config.root)] }
+  config.site_title = 'Weltverbessern'
+  config.root_breadcrumbs = -> { [Trestle::Breadcrumb.new('Weltverbessern', Trestle.config.root)] }
 
   config.after_action do |controller|
     I18n.backend.reload!
