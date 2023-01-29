@@ -1,7 +1,7 @@
 Trestle.resource(:incentives) do
   menu do
     group I18n.t('admin.groups.content'), priority: :first do
-      item I18n.t('admin.incentives.breadcrumbs.index'), icon: 'fa fa-box'
+      item I18n.t('admin.incentives.breadcrumbs.index'), icon: 'fa fa-box', priority: :last
     end
   end
 

@@ -177,6 +177,22 @@ en:
       content: "Content"
       outcome: "Outcome"
       configuration: "Configuration"
+    images:
+      breadcrumbs:
+        index: "Images"
+      titles:
+        index: "You just look great today"
+        edit: "Edit Image"
+        new: "New Image"
+      table:
+        headers:
+          key: "Key"
+          locale: "Language"
+      form:
+        fields:
+          key: "Key"
+          locale: "Language (empty: all)"
+          file: "Image File"
     incentives:
       breadcrumbs:
         index: "Packages"

@@ -177,6 +177,22 @@ de:
       content: "Inhalte"
       outcome: "Resultate"
       configuration: "Konfiguration"
+    images:
+      breadcrumbs:
+        index: "Bilder"
+      titles:
+        index: "Du siehst heute sehr gut aus"
+        edit: "Bild bearbeiten"
+        new: "Neues Bild"
+      table:
+        headers:
+          key: "Schlüssel"
+          locale: "Sprache"
+      form:
+        fields:
+          key: "Schlüssel"
+          locale: "Sprache (leer: alle)"
+          file: "Bild-Datei"
     incentives:
       breadcrumbs:
         index: "Pakete"

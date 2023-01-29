@@ -53,6 +53,10 @@ gem 'i18n-active_record', require: 'i18n/active_record'
 gem 'trestle'
 gem 'trestle-auth'
 gem 'trestle-search'
+gem 'trestle-active_storage', git: 'https://github.com/richardvenneman/trestle-active_storage.git', ref: '5a9c90e3d71c8cf6b40444292d7e77f3137c589b'
+
+# Image processing
+gem 'image_processing', '~> 1.2'
 
 # For Heroku
 gem 'rails_12factor'
