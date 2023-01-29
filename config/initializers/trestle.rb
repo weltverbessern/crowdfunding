@@ -1,6 +1,7 @@
 Trestle.configure do |config|
-  config.site_title = 'Weltverbessern'
-  config.root_breadcrumbs = -> { [Trestle::Breadcrumb.new('Weltverbessern', Trestle.config.root)] }
+  brand = ENV['WELTVERBESSERN_BRAND'] || 'Weltverbessern'
+  config.site_title = brand
+  config.root_breadcrumbs = -> { [Trestle::Breadcrumb.new(brand, Trestle.config.root)] }
 
   config.after_action do |controller|
     I18n.backend.reload!
