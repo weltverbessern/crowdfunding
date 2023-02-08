@@ -33,7 +33,7 @@ class Order < ApplicationRecord
   end
 
   def self.backers
-    Order.count
+    Order.count + Settings.initial_backers
   end
 
   def self.revenue
@@ -44,7 +44,7 @@ class Order < ApplicationRecord
         'processing'
       ).pluck('sum(amount)')[0].to_f
     else
-      Order.sum(:price).to_f
+      Order.sum(:price).to_f + Settings.initial_revenue
     end 
   end
 
