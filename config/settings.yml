@@ -1,15 +1,19 @@
-available_locales: ["en", "de"]
-default_locale: "de"
+available_locales: <%= (ENV['WELTVERBESSERN_AVAILABLE_LOCALES'] || 'en,de').split ',' %>
+default_locale: <%= ENV['WELTVERBESSERN_DEFAULT_LOCALE'] || 'en' %>
+time_zone: <%= ENV['WELTVERBESSERN_TIME_ZONE'] || 'UTC' %>
 
-currency: "EUR"
-currency_symbol: "€"
-project_goal: 10000
-price: 19.90
-# expiration_date: <%= DateTime.now + 29.days %>
+currency: <%= ENV['WELTVERBESSERN_CURRENCY'] || 'EUR' %>
+currency_symbol: <%= ENV['WELTVERBESSERN_CURRENCY_SYMBOL'] || '€' %>
+project_goal: <%= (ENV['WELTVERBESSERN_PROJECT_GOAL'] || '20000').to_i %>
+price: <%= (ENV['WELTVERBESSERN_PRICE'] || '19.90').to_f %>
+expiration_date: <%= ENV['WELTVERBESSERN_EXPIRATION_DATE'] %>
+display_revenue: <%= %w(true 1).include? ENV['WELTVERBESSERN_DISPLAY_REVENUE'] %>
+initial_backers: <%= (ENV['WELTVERBESSERN_INITIAL_BACKERS'] || '0').to_i %>
+initial_revenue: <%= (ENV['WELTVERBESSERN_INITIAL_REVENUE'] || '0').to_f %>
 
-num_key_points: 4
-num_other_points: 4
-num_faqs: 8
+num_key_points: <%= (ENV['WELTVERBESSERN_NUM_KEY_POINTS'] || '4').to_i %>
+num_other_points: <%= (ENV['WELTVERBESSERN_NUM_OTHER_POINTS'] || '4').to_i %>
+num_faqs: <%= (ENV['WELTVERBESSERN_NUM_FAQS'] || '8').to_i %>
 
-payment_mode: 'test'
-payment_provider_stripe: true
+payment_mode: <%= ENV['WELTVERBESSERN_PAYMENT_MODE'] || 'test' %>
+payment_provider_stripe: <%= %w(true 1).include? ENV['WELTVERBESSERN_PAYMENT_PROVIDER_STRIPE'] %>
