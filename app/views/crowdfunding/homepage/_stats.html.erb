@@ -47,22 +47,26 @@
     </div>
     <div class="col-lg-6">
       <ul class="list-group list-group-horizontal-sm">
-        <li class="list-group-item flex-fill">
+        <li class="list-group-item flex-grow-1">
           <div class="display-6 fw-bold">
             <%= number_with_delimiter Order.backers, :delimiter => t('general.delimiter') %>
           </div>
           <div><%= t('.backers') %></div>
         </li>
-        <li class="list-group-item flex-fill">
+        <li class="list-group-item flex-grow-1">
           <div class="display-6 fw-bold">
-            <%= number_to_currency Order.revenue, :precision => 0, :unit => Settings.currency_symbol %>
+            <% if Settings.display_revenue %>
+              <%= number_to_currency Order.revenue, :precision => 0, :unit => Settings.currency_symbol %>
+            <% else %>
+              <%= Order.percent.round %>&nbsp;%
+            <% end %>
           </div>
           <div>
             <%= t('.of') %>
             <%= number_to_currency Settings.project_goal.to_f, :precision => 0, :unit => Settings.currency_symbol %>
           </div>
         </li>
-        <li class="list-group-item flex-fill">
+        <li class="list-group-item flex-grow-1">
           <% if Settings.expiration_date.present? %>
             <div class="display-6 fw-bold">
               <%= distance_of_time_in_words_to_now(Settings.expiration_date, scope: "general.datetime.distance_in_words").gsub(/\D/, "") %>
@@ -89,7 +93,7 @@
           aria-valuemax="100"
         >
           <% if Order.revenue.to_f >= Order.goal.to_f %>
-            <%= Order.percent %>% <%= t('.implemented') %>
+            <%= Order.percent.round %>&nbsp;% <%= t('.implemented') %>
           <% end %>
         </div>
       </div>
