@@ -9,3 +9,12 @@ $primary: #003399; // One World Flag color: https://1worldflag.com/flag/
 .bg-light + .container footer {
     border-top: none !important;
 }
+
+.card-body {
+    p {
+        margin: 0;
+        & + p {
+            margin-top: 1rem;
+        }
+    }
+}
