@@ -23,9 +23,9 @@ Trestle.resource(:translations) do
   end
 
   table do
-    column :key
+    column :key, truncate: { length: 100 }
     column :locale
-    column :value
+    column :value, truncate: { length: 100 }
     actions
   end
 
