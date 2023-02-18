@@ -67,37 +67,37 @@ de:
       key_points:
         1:
           title: "Dein wichtigster Punkt"
-          text: "Erzähle, was du machst und warum das wichtig ist. Welches wirklich wichtige Problem löst deine Idee?"
+          text_html: "Erzähle, was du machst und warum das wichtig ist. Welches wirklich wichtige Problem löst deine Idee?"
           img_url: "https://picsum.photos/700/500?random=1"
           img_alt: "Ein Bild"
         2:
           title: "Dein zweiter Punkt"
-          text: "Erzähle, was du machst und warum das wichtig ist. Welches wirklich wichtige Problem löst deine Idee?"
+          text_html: "Erzähle, was du machst und warum das wichtig ist. Welches wirklich wichtige Problem löst deine Idee?"
           img_url: "https://picsum.photos/700/500?random=2"
           img_alt: "Ein Bild"
         3:
           title: "Ein weiterer Punkt"
-          text: "Erzähle, was du machst und warum das wichtig ist. Welches wirklich wichtige Problem löst deine Idee?"
+          text_html: "Erzähle, was du machst und warum das wichtig ist. Welches wirklich wichtige Problem löst deine Idee?"
           img_url: "https://picsum.photos/700/500?random=3"
           img_alt: "Ein Bild"
         4:
           title: "Ein weiterer Punkt"
-          text: "Erzähle, was du machst und warum das wichtig ist. Welches wirklich wichtige Problem löst deine Idee?"
+          text_html: "Erzähle, was du machst und warum das wichtig ist. Welches wirklich wichtige Problem löst deine Idee?"
           img_url: "https://picsum.photos/700/500?random=4"
           img_alt: "Ein Bild"
       other_points:
         1:
           title: "Noch etwas"
-          text: "Noch mehr Text"
+          text_html: "Noch mehr Text"
         2:
           title: "Noch etwas"
-          text: "Noch mehr Text"
+          text_html: "Noch mehr Text"
         3:
           title: "Noch etwas"
-          text: "Noch mehr Text"
+          text_html: "Noch mehr Text"
         4:
           title: "Noch etwas"
-          text: "Noch mehr Text"
+          text_html: "Noch mehr Text"
       middle_cta:
         title: "Sei jetzt dabei!"
         button: "Jetzt vorbestellen"
@@ -105,28 +105,28 @@ de:
         title: "Fragen & Antworten"
         1:
           question: "Frage 1"
-          answer: "Antwort 1"
+          answer_html: "Antwort 1"
         2:
           question: "Frage 2"
-          answer: "Antwort 2"
+          answer_html: "Antwort 2"
         3:
           question: "Frage 3"
-          answer: "Antwort 3"
+          answer_html: "Antwort 3"
         4:
           question: "Frage 4"
-          answer: "Antwort 4"
+          answer_html: "Antwort 4"
         5:
           question: "Frage 5"
-          answer: "Antwort 5"
+          answer_html: "Antwort 5"
         6:
           question: "Frage 6"
-          answer: "Antwort 6"
+          answer_html: "Antwort 6"
         7:
           question: "Frage 7"
-          answer: "Antwort 7"
+          answer_html: "Antwort 7"
         8:
           question: "Frage 8"
-          answer: "Antwort 8"
+          answer_html: "Antwort 8"
     checkout:
       headline: "Danke, dass du uns unterstützt"
       encouragement: "Hier kannst du nochmal einen Satz hinzufügen, warum es so wichtig ist, dass man dein Projekt unterstützt"

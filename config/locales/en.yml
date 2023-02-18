@@ -67,37 +67,37 @@ en:
       key_points:
         1:
           title: "Your most important point"
-          text: "Tell what you're doing and why it's important. Which truly important problem does your idea solve?"
+          text_html: "Tell what you're doing and why it's important. Which truly important problem does your idea solve?"
           img_url: "https://picsum.photos/700/500?random=1"
           img_alt: "An image"
         2:
           title: "Your second point"
-          text: "Tell what you're doing and why it's important. Which truly important problem does your idea solve?"
+          text_html: "Tell what you're doing and why it's important. Which truly important problem does your idea solve?"
           img_url: "https://picsum.photos/700/500?random=2"
           img_alt: "An image"
         3:
           title: "One more point"
-          text: "Tell what you're doing and why it's important. Which truly important problem does your idea solve?"
+          text_html: "Tell what you're doing and why it's important. Which truly important problem does your idea solve?"
           img_url: "https://picsum.photos/700/500?random=3"
           img_alt: "An image"
         4:
           title: "One more point"
-          text: "Tell what you're doing and why it's important. Which truly important problem does your idea solve?"
+          text_html: "Tell what you're doing and why it's important. Which truly important problem does your idea solve?"
           img_url: "https://picsum.photos/700/500?random=4"
           img_alt: "An image"
       other_points:
         1:
           title: "Another thing"
-          text: "Even more text"
+          text_html: "Even more text"
         2:
           title: "Another thing"
-          text: "Even more text"
+          text_html: "Even more text"
         3:
           title: "Another thing"
-          text: "Even more text"
+          text_html: "Even more text"
         4:
           title: "Another thing"
-          text: "Even more text"
+          text_html: "Even more text"
       middle_cta:
         title: "Join now!"
         button: "Preorder now"
@@ -105,28 +105,28 @@ en:
         title: "Frequently Asked Questions"
         1:
           question: "Question 1"
-          answer: "Answer 1"
+          answer_html: "Answer 1"
         2:
           question: "Question 2"
-          answer: "Answer 2"
+          answer_html: "Answer 2"
         3:
           question: "Question 3"
-          answer: "Answer 3"
+          answer_html: "Answer 3"
         4:
           question: "Question 4"
-          answer: "Answer 4"
+          answer_html: "Answer 4"
         5:
           question: "Question 5"
-          answer: "Answer 5"
+          answer_html: "Answer 5"
         6:
           question: "Question 6"
-          answer: "Answer 6"
+          answer_html: "Answer 6"
         7:
           question: "Question 7"
-          answer: "Answer 7"
+          answer_html: "Answer 7"
         8:
           question: "Question 8"
-          answer: "Answer 8"
+          answer_html: "Answer 8"
     checkout:
       headline: "Thank you for your support"
       encouragement: "You can add another sentence here about why it is so important that people support your project"
