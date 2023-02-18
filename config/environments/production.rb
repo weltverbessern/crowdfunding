@@ -63,6 +63,6 @@ Weltverbessern::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  # Store files locally
-  config.active_storage.service = :local
+  # Use cloud storage
+  config.active_storage.service = :cloud
 end
