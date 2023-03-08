@@ -2,9 +2,11 @@ de:
   project:
     name: "Dein Projekt"
     copyright: "© Du"
-    twitter_url: "#"
+    mastodon_url: "#"
     instagram_url: "#"
     facebook_url: "#"
+    twitter_url: "#"
+    github_url: "#"
   general:
     delimiter: "."
     datetime:

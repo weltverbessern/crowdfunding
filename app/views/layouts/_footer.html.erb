@@ -5,10 +5,10 @@
     </div>
 
     <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <% unless t('project.twitter_url').empty? %>
+      <% unless t('project.mastodon_url').empty? %>
         <li class="ms-3">
-          <a class="text-muted" href="<%= t('project.twitter_url') %>">
-            <svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg>
+          <a class="text-muted" href="<%= t('project.mastodon_url') %>">
+            <svg class="bi" width="24" height="24"><use xlink:href="#mastodon"/></svg>
           </a>
         </li>
       <% end %>
@@ -23,6 +23,20 @@
         <li class="ms-3">
           <a class="text-muted" href="<%= t('project.facebook_url') %>">
             <svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg>
+          </a>
+        </li>
+      <% end %>
+      <% unless t('project.twitter_url').empty? %>
+        <li class="ms-3">
+          <a class="text-muted" href="<%= t('project.twitter_url') %>">
+            <svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg>
+          </a>
+        </li>
+      <% end %>
+      <% unless t('project.github_url').empty? %>
+        <li class="ms-3">
+          <a class="text-muted" href="<%= t('project.github_url') %>">
+            <svg class="bi" width="24" height="24"><use xlink:href="#github"/></svg>
           </a>
         </li>
       <% end %>
